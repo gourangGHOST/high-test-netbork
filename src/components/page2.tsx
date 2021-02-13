@@ -38,10 +38,16 @@ export class Page2 extends React.Component {
                     <VStack spacing={2}>
                     </VStack>
                 </Grid>
+                <Link as={RouterLink} to="/">
+                Previous Page
+                </Link>
+                <Spacer/>
                 <Link as={RouterLink} to="/page3"
                 >
                     Next Page
               </Link>
+        
+           
                 <Spacer />
                 <Link as={RouterLink} to="/"
                 >
