@@ -281,7 +281,7 @@ function SlideEx() {
           >
             <Text>
             Network ID (NID) to identify the network. Host ID (HID) to identify the host within a particular network NID -&gt; NETWORK ID
-                <br/>BID -&gt; BRODCAST ID
+            Broadcasting in a computer network is transmitting a message which does not require a response to all users of the network.One computer in a network sends a data packet to all other users at the same time.<br/>BID -&gt; BRODCAST ID
                 
             
             </Text>
