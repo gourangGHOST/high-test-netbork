@@ -83,7 +83,7 @@ export function Page2() {
 }
 function SlideEx() {
     const { isOpen, onToggle } = useDisclosure()
-    const color = useColorModeValue('purple.400', 'green.600');
+    const color = useColorModeValue('purple.400', 'plum');
     const textcolor = useColorModeValue('white', 'white');
     return (
         <>

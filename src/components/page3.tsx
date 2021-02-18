@@ -42,7 +42,7 @@ import { ColorModeSwitcher } from "../ColorModeSwitcher"
 
 
 export function Page3() {
-    const color = useColorModeValue('purple.400', 'green.600');
+    const color = useColorModeValue('purple.400', 'plum');
     const textcolor = useColorModeValue('white', 'white');
     return (
 
