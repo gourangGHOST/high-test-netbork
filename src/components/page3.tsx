@@ -10,7 +10,6 @@ import {
     Table,
     Thead,
     Tbody,
-    Tfoot,
     Tr,
     Th,
     Td,
@@ -24,6 +23,14 @@ import {
     Kbd,
     UnorderedList,
     ListItem,
+    Button,
+    Slide,
+    useDisclosure,
+    Drawer,
+    DrawerBody,
+    DrawerContent,
+    DrawerHeader,
+    DrawerOverlay,
 } from "@chakra-ui/react";
 
 import pngdark from "../resources/abcd1.png";
@@ -40,6 +47,9 @@ export function Page3() {
     return (
 
         <Box textAlign="center" fontSize="xl">
+            <Box textAlign="left" position="fixed">
+                        <SizeExample />
+                    </Box>
 
             <Grid minH="50vh" p={3}>
                 <ColorModeSwitcher justifySelf="flex-end" />
@@ -141,30 +151,30 @@ export function Page3() {
                         Each of these classes has a valid range of IP addresses.<br />
                             Classes D and E are reserved for multicast and experimental purposes respectively.
                     </Text>
-                    <Text forntsize="4xl"   fontWeight="bold">STATIC AND DYNAMIC IP ADDRESS</Text>
-                    <Text forntsize="2xl" width="90%">An Internet Protocol (IP) address is a unique number assigned to each computer on a network. 
-                        ... A computer on the Internet can have a static IP address, which means it stays the same over 
+                    <Text forntsize="4xl" fontWeight="bold">STATIC AND DYNAMIC IP ADDRESS</Text>
+                    <Text forntsize="2xl" width="90%">An Internet Protocol (IP) address is a unique number assigned to each computer on a network.
+                    ... A computer on the Internet can have a static IP address, which means it stays the same over
                         time, or a dynamic IP address, which means the address can change over time.</Text>
-                        <Text fontSize="4xl">
-                            DIFFRENCE BETWEEN IPV4 AND IPV6
+                    <Text fontSize="4xl">
+                        DIFFRENCE BETWEEN IPV4 AND IPV6
                         </Text>
-                        <Box boxSize="auto">
+                    <Box boxSize="auto">
                         <Image src={image} />
-                        </Box>
+                    </Box>
                     <Text fontSize="4xl" fontFamily="heading" fontWeight="bold"> SUBNETTING</Text>
-                    <Text fontSize="1xl"width="90%" textAlign="center" > A subnetwork or subnet is a logical subdivision of an IP network. The practice of dividing
+                    <Text fontSize="1xl" width="90%" textAlign="center" > A subnetwork or subnet is a logical subdivision of an IP network. The practice of dividing
                     a network into two or more networks is called subnetting. ... This results in the logical division of an IP address
                     into two fields: the network number and the rest field or host identifier.
                     </Text>
                     <Text fontWeight="bold" fontSize="3xl">
                         OR
                     </Text>
-                    <Text width="90%" textAlign="center"> 
-                    
-                    An IP address is an address used in order to uniquely identify a device on an IP network. The address is made up of 32 binary bits, which can be divisible into a network portion and host portion with the help of a subnet mask</Text>
-                    
+                    <Text width="90%" textAlign="center">
+
+                        An IP address is an address used in order to uniquely identify a device on an IP network. The address is made up of 32 binary bits, which can be divisible into a network portion and host portion with the help of a subnet mask</Text>
+
                     <UnorderedList textAlign="left">
-                        
+
                         <Table variant="simple">
                             <TableCaption>SUBNETTING </TableCaption>
                             <Thead>
@@ -182,7 +192,7 @@ export function Page3() {
                                         <TagLabel>N.</TagLabel>
                                     </Tag><Tag size="lg" variant="subtle" colorScheme="blue">
                                             <TagLabel>H.H.H</TagLabel></Tag></Td>
-                                    
+
                                 </Tr>
                                 <Tr>
                                     <Td isNumeric>255.255.0.0</Td>
@@ -191,7 +201,7 @@ export function Page3() {
                                         <TagLabel>N.N.</TagLabel>
                                     </Tag><Tag size="lg" variant="subtle" colorScheme="blue">
                                             <TagLabel>H.H</TagLabel></Tag></Td>
-                                  
+
                                 </Tr>
                                 <Tr>
                                     <Td isNumeric>255.255.255.0</Td>
@@ -200,15 +210,18 @@ export function Page3() {
                                         <TagLabel>N.N.N.</TagLabel>
                                     </Tag><Tag size="lg" variant="subtle" colorScheme="blue">
                                             <TagLabel>H</TagLabel></Tag></Td>
-                                    
-                                
+
+
                                 </Tr>
                             </Tbody>
 
                         </Table>
+
                     </UnorderedList>
+                    <SlideEx/>
+
                     <Text fontSize="4xl" fontWeight="bold ">
-                    Practical Work
+                        Practical Work
                     </Text>
                     <UnorderedList textAlign="left">
                         <ListItem>Finding the IP Address of computer</ListItem>
@@ -216,7 +229,7 @@ export function Page3() {
                         <ListItem>Checking of connection</ListItem>
                         <ListItem>Getting IP Address of google.com</ListItem>
                     </UnorderedList>
-                    
+
                 </VStack>
             </Grid>
             <Spacer />
@@ -224,7 +237,7 @@ export function Page3() {
             <Link as={RouterLink} to="/page2">
                 Previous Page
                 </Link>
-                <Spacer/> 
+            <Spacer />
             <Link as={RouterLink} to="/page4">
                 Next Page
                 </Link>
@@ -249,4 +262,68 @@ function MyImage() {
             boxSize="550px"//<---- This is the property 'boxsize'
         />
     );
+}
+function SlideEx() {
+    const { isOpen, onToggle } = useDisclosure()
+    const color = useColorModeValue('purple.400', 'green.600');
+    const textcolor = useColorModeValue('white', 'white');
+    return (
+      <>
+        <Button onClick={onToggle}> NID AND BID  </Button>
+        <Slide direction="bottom" in={isOpen} style={{ zIndex: 10 }}>
+          <Box
+            p=""
+            textColor={textcolor}
+            mt="4"
+            bg={color}
+            rounded="md"
+            shadow="md"
+          >
+            <Text>
+            Network ID (NID) to identify the network. Host ID (HID) to identify the host within a particular network NID -&gt; NETWORK ID
+                <br/>BID -&gt; BRODCAST ID
+                
+            
+            </Text>
+          </Box>
+        </Slide>
+      </>
+    )
+  }
+
+  function SizeExample() {
+    const [size, setSize] = React.useState("md")
+    const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const handleClick = (newSize: React.SetStateAction<string>) => {
+        setSize(newSize)
+        onOpen()
+    }
+
+    const sizes = ["xs"]
+
+    return (
+        <>
+            {sizes.map((size) => (
+                <Button
+                    onClick={() => handleClick(size)}
+                    key={size}
+                    m={4}
+                >{`MENU`}</Button>
+            ))}
+
+            <Drawer onClose={onClose} isOpen={isOpen} size={size}>
+                <DrawerOverlay>
+                    <DrawerContent>
+                        <DrawerHeader>{``}</DrawerHeader>
+                        <DrawerBody>
+                            {size === "full"
+                                ? `You're trapped 😆 , refresh the page to leave or press 'Esc' key.`
+                                : null}
+                        </DrawerBody>
+                    </DrawerContent>
+                </DrawerOverlay>
+            </Drawer>
+        </>
+    )
 }
