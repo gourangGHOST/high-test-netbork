@@ -46,5 +46,8 @@
         "@types/react": "^16.14.3"
     },
     "author": "Aakash",
-    "license": "MIT"
+    "license": "MIT",
+    "engines": {
+        "node": "14.x"
+    }
 }
