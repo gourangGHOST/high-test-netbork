@@ -17,16 +17,17 @@ import {
     DrawerContent,
     DrawerHeader,
     DrawerOverlay,
+    Heading,
 } from "@chakra-ui/react";
 
-import pngdark from "../resources/abcd1.png";
+import RIP from "../resources/RIP.png";
 import pnglite from "../resources/abcd.png";
 
 import { Link as RouterLink, Redirect, Route } from "react-router-dom"
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
 
 
-export function Page2() {
+export function Page5() {
     const color = useColorModeValue('purple.400', 'plum');
     const textcolor = useColorModeValue('white', 'white');
     return (
@@ -47,28 +48,54 @@ export function Page2() {
 
                     </Box>
                     <Text fontSize="3xl">
-                        INTRODUCTION TO CISCO PACKET TRACER
+                        Routing v/s Routed Protocols in Computer Network (RIP)
 
                         </Text>
-                    <Text width="90%" textAlign="center">
-                        Packet Tracer is a cross-platform visual simulation tool designed by Cisco Systems that allows users to create network topologies and imitate modern computer networks. The software
-                        allows users to simulate the configuration of Cisco routers and switches using a simulated command line interface
+                    <Text width="70%" textAlign="center">
+                        The Network Layer of the OSI Model is responsible for providing logical addressing, which routers use to select best path for routing packets
                         </Text>
+                    <Image src={RIP}></Image>
+                    <Text width="60%" textAlign="left">
+                    Design Network with three routers A,B,C<p/>
+Open Router A &gt;CMD<p/>
+Router &gt;EN<p/>
+Login<p/>
+#CONF T<p/>
+#ROUTER EIGRP 100<p/>
+#NETWORK 192.168.1.0<p/>
+#NETWORK 192.168.2.0<p/>
+#EXIT<p/>
 
-                    <Text width="90%" textAlign="center">
-                        DOWNLOAD CPT BY CLICKING THE BELOW
-                            </Text>
-                    <RedirectButton />
-                    <SlideEx />
+For B<p/>
+Open Router B  &gt; CMD<p/>
+Router &gt;EN<p/>
+Login<p/>
+#CONF T<p/>
+#ROUTER EIGRP 100<p/>
+#NETWORK 192.168.3.0<p/>
+#NETWORK 192.168.4.0<p/>
+#NETWORK 192.168.5.0<p/>
+#EXIT<p/>
+
+
+Repeat steps for B and C router.<p/>
+
+                    </Text>
+<Heading>
+Open Shortest Path First Protocol fundamentals(OSPF)</Heading>
+<Text width="4xl">Open shortest path first (OSPF) is a link-state routing protocol which is used to find the best path between the source and the destination router using its own shortest path first (SPF) algorithm. A link-state routing protocol is a protocol which uses the concept of triggered updates, i.e., if there is a change observed in the learned routing table then the updates are triggered only, not like the distance-vector routing protocol where the routing table are exchanged at a period of time.<p/>
+
+Open shortest path first (OSPF) is developed by Internet Engineering Task Force (IETF) as one of the Interior Gateway Protocol (IGP), i.e., the protocol which aims at moving the packet within a large autonomous system or routing domain. It is a network layer protocol which works on the protocol number 89 and uses AD value 110. OSPF uses multicast address 224.0.0.5 for normal communication and 224.0.0.6 for update to designated router(DR)/Backup Designated Router (BDR).</Text>
+
                 </VStack>
             </Grid>
             <Spacer />
 
-            <Link as={RouterLink} to="/page1">
+            <Link as={RouterLink} to="/page4">
                 Previous Page
                 </Link>
             <Spacer />
-            <Link as={RouterLink} to="/page3">
+            <Link as={RouterLink} to="/page6">
                 Next Page
                 </Link>
             <Spacer />
@@ -98,9 +125,7 @@ function SlideEx() {
                     shadow="md"
                 >
                     <Text>
-                        Packet Tracer offers an effective, interactive environment for learning networking concepts and protocols. Most importantly, Packet Tracer helps students and instructors create their own
-                        virtual “network worlds” for exploration, experimentation, and explanation of networking concepts and technologies.
-            </Text>
+                    </Text>
                 </Box>
             </Slide>
         </>

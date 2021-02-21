@@ -17,6 +17,8 @@ import {
     DrawerContent,
     DrawerHeader,
     DrawerOverlay,
+    OrderedList,
+    ListItem,
 } from "@chakra-ui/react";
 
 import pngdark from "../resources/abcd1.png";
@@ -26,12 +28,12 @@ import { Link as RouterLink, Redirect, Route } from "react-router-dom"
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
 
 
-export function Page2() {
+export function Page9() {
     const color = useColorModeValue('purple.400', 'plum');
     const textcolor = useColorModeValue('white', 'white');
     return (
 
-        <Box textAlign="center" fontSize="1xl">
+        <Box textAlign="center" fontSize="2xl">
             <Box textAlign="left" position="fixed">
                 <SizeExample />
             </Box>
@@ -47,28 +49,28 @@ export function Page2() {
 
                     </Box>
                     <Text fontSize="3xl">
-                        INTRODUCTION TO CISCO PACKET TRACER
-
+                    
+                    Network scanning
                         </Text>
-                    <Text width="90%" textAlign="center">
-                        Packet Tracer is a cross-platform visual simulation tool designed by Cisco Systems that allows users to create network topologies and imitate modern computer networks. The software
-                        allows users to simulate the configuration of Cisco routers and switches using a simulated command line interface
-                        </Text>
+                    <Text width="70%" textAlign="left">
+                    Network scanning refers to the use of a computer network to gather information regarding computing systems. Network scanning is mainly used for security assessment, system maintenance, and also for performing attacks by attackers.<p/>
+Tools that we can used for network scanning are : →<OrderedList>
+<ListItem>Fing App to identify connected devices, troubleshoot network and device issues,scan network , detect network intruders and run Wi-Fi and internet speed tests anywhere.</ListItem>
+<ListItem>NMAP (Network Mapper) is a free and open source (license) utility for network discovery and security auditing. Many systems and network administrators also find it useful for tasks such as network inventory, managing service upgrade schedules, and monitoring host or service up time. NMAP uses raw IP packets in novel ways to determine what hosts are available on the network, what services (application name and version) those hosts are offering, what operating systems (and OS versions) they are running, what type of packet filters/firewalls are in use, and dozens of other characteristics. It was designed to rapidly scan large networks, but works fine against single hosts. NMAP runs on all major computer operating systems, and official binary packages are available for Linux, Windows, and Mac OS X.
+</ListItem> 
+</OrderedList>
+The purpose of network scanning is to manage, maintain, and secure the system using data found by the scanner. Network scanning is used to recognize available network services, discover and recognize any filtering systems in place, look at what operating systems are in use, and to protect the network from attacks.
+ </Text>
 
-                    <Text width="90%" textAlign="center">
-                        DOWNLOAD CPT BY CLICKING THE BELOW
-                            </Text>
-                    <RedirectButton />
-                    <SlideEx />
                 </VStack>
             </Grid>
             <Spacer />
 
-            <Link as={RouterLink} to="/page1">
+            <Link as={RouterLink} to="/page8">
                 Previous Page
                 </Link>
             <Spacer />
-            <Link as={RouterLink} to="/page3">
+            <Link as={RouterLink} to="/page10">
                 Next Page
                 </Link>
             <Spacer />
@@ -98,8 +100,7 @@ function SlideEx() {
                     shadow="md"
                 >
                     <Text>
-                        Packet Tracer offers an effective, interactive environment for learning networking concepts and protocols. Most importantly, Packet Tracer helps students and instructors create their own
-                        virtual “network worlds” for exploration, experimentation, and explanation of networking concepts and technologies.
+                    
             </Text>
                 </Box>
             </Slide>

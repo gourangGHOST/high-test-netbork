@@ -8,6 +8,7 @@ import {
     VStack,
     Code,
     Grid,
+    Image,
     Button,
     Drawer,
     DrawerBody,
@@ -15,41 +16,47 @@ import {
     DrawerHeader,
     DrawerOverlay,
     useDisclosure,
+    background,
+    useColorModeValue,
 } from "@chakra-ui/react"
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
+import qwer from "../resources/qwer.jpg"
 
-
-export class HomeComponent extends React.Component {
-
-    render() {
+export function HomeComponent(){
+    
+   
         return (
 
 
 
 
-            <Box textAlign="right">
+            <Box>
                 <Grid minH="100vh" p={3}>
 
                     <ColorModeSwitcher justifySelf="flex-end" />
                     <Box textAlign="left" position="fixed">
                         <SizeExample />
                     </Box>
-                    <VStack spacing={8}>
+                   <MyImage/>
+                    
+                    <Box >
+                    
 
 
-                        <Link as={RouterLink} to="/">
-                            Previous Page
-                </Link>
-                        <Link as={RouterLink} to="/page1">
+                        <Link as={RouterLink} to="/page1" color="teal.500" fontSize="2xl"
+                            position="sticky">
                             Getting started -{">"}
                         </Link>
-                        <Link as={RouterLink} to="/page2">
+                        <Link as={RouterLink} to="/page2" color="teal.500" fontSize="2xl"
+                            position="sticky">
                             Cisco packet tracer
                 </Link>
-                        <Link as={RouterLink} to="/page3">
+                        <Link as={RouterLink} to="/page3" color="teal.500" fontSize="2xl"
+                            position="sticky">
                             IP ADDRESS
                 </Link>
-                        <Link as={RouterLink} to="/page4">
+                        <Link as={RouterLink} to="/page4"  color="teal.500" fontSize="2xl"
+                            position="sticky">
                             ROUTERS
                 </Link>
                         <Link
@@ -61,14 +68,14 @@ export class HomeComponent extends React.Component {
                         >
                             Next Page
           </Link>
-                    </VStack>
-
+                    
+</Box>
 
                 </Grid>
             </Box>
         )
-    }
-}
+        }
+
 function SizeExample() {
     const [size, setSize] = React.useState("md")
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -107,3 +114,15 @@ function SizeExample() {
 }
 
 
+
+function MyImage() {
+    const source = (qwer);
+    const color = useColorModeValue('purple.400', 'plum');
+    const textcolor = useColorModeValue('white', 'white');
+    return (
+        <Image
+            src={source}
+            
+        />
+    );
+}

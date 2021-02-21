@@ -16,14 +16,18 @@ import {
     DrawerHeader,
     DrawerOverlay,
     useDisclosure,
+    color,
+    useColorModeValue,
+    Heading,
 } from "@chakra-ui/react"
 import { Link as RouterLink, Redirect } from "react-router-dom"
 
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
-export class Page1 extends React.Component {
+export function Page1() {
 
-
-    render() {
+    const color = useColorModeValue('purple.400', 'plum');
+    const textcolor = useColorModeValue('white', 'black');
+    
 
         return (
 
@@ -38,11 +42,12 @@ export class Page1 extends React.Component {
                 <Grid minH="50vh" p={3}>
                 <VStack spacing={2}>
                     <ColorModeSwitcher justifySelf="flex-end" />
-                    
+                    <Box bg={color} w="auto" p={4} textColor={textcolor} opacity="50%" borderRadius="full">
                         <Text fontSize="5xl">
                             Networking & it’s Security
-                    <Spacer />
-                    Getting Started </Text>
+                            </Text></Box>
+                    <Spacer /><Heading>
+                    Getting Started </Heading>
                         <Spacer />
                         <Text width="50%">
                         Network security is a broad term that covers a multitude of technologies, devices and processes. In its simplest term, it is a set of rules and configurations designed to protect the integrity, confidentiality and accessibility of computer networks and data using both software and hardware technologies.
@@ -59,7 +64,7 @@ export class Page1 extends React.Component {
                         
 Why is network security important?
                     </Text>
-                    <Text width="60%">
+                    <Text width="50%">
                     Network security is important for home networks as well as in the business world. Most homes with high-speed internet connections have one or more wireless routers, which could be exploited if not properly secured.  A solid network security system helps reduce the risk of data loss, theft and sabotage.
                     </Text>
                     
@@ -90,7 +95,7 @@ Why is network security important?
             </Box>
         )
     }
-}
+
 
 
 export function RedirectButton() {
