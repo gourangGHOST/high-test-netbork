@@ -23,6 +23,8 @@ import {
 import NAT from "../resources/NAT.png";
 import NAT1 from "../resources/NAT1.png";
 import acl1 from "../resources/acl1.png";
+import { Header } from "./header";
+import { Footer } from "./footer";
 
 import { Link as RouterLink, Redirect, Route } from "react-router-dom"
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
@@ -30,13 +32,14 @@ import { ColorModeSwitcher } from "../ColorModeSwitcher"
 
 export function Page7() {
     const color = useColorModeValue('purple.400', 'plum');
-    const textcolor = useColorModeValue('white', 'white');
+    const textcolor = useColorModeValue('white', 'black');
     return (
 
         <Box textAlign="center" fontSize="1xl">
             <Box textAlign="left" position="fixed">
                 <SizeExample />
             </Box>
+            <Box paddingtop="10" > <Header/></Box>
 
             <Grid minH="50vh" p={3}>
                 <ColorModeSwitcher justifySelf="flex-end" />
@@ -49,7 +52,7 @@ export function Page7() {
 
                     </Box>
                     <Heading>ACL</Heading>
-                    <Text width="70%" textAlign="left" >
+                    <Text width="70%" textAlign="left" id="acl" >
 
                         An Access Control List (ACL) is a set of rules that is usually used to filter network traffic. ACLs can be configured on network devices with packet filtering capatibilites, such as routers and firewalls.<p />
 
@@ -74,8 +77,8 @@ export function Page7() {
                         • configured close to source.<p />
                         • Permit/ Deny on basis of Source IP, Dest IP, Port No. ,Protocol.<p />
                         Steps:<p />
-
-                        ACL CREATION:<p />
+</Text><Heading id="aclc">ACL CREATION:<p /></Heading>
+<Text width="70%" textAlign="left" >
  #ACCESS-LIST  {"<"}  No.&gt;  Permit/Deny  {'<'}Protocol&gt;   Source IP&gt;   {'<'}Source WCM &gt;  {'<'}Destination IP &gt;{'<'}Destination WCM &gt;  {'<'}Operator&gt; {'<'}Port No.&gt;<p />
 
 EXAMPLE:<p />
@@ -84,9 +87,9 @@ EXAMPLE:<p />
 #ACCESS-LIST 110 PERMIT ICMP ANY ANY<p />
 ACL IMPLEMENTATION:-<p />
 
-#INTERFACE {'<'}TYPE&gbt;  {'<'}No.&gbt;<p />
+#INTERFACE {'<'}TYPE&gt;  {'<'}No.&gt;<p />
 
-#IP ACCESS-GROUP {'<'}No.&gbt;  IN/OUT<p />
+#IP ACCESS-GROUP {'<'}No.&gt;  IN/OUT<p />
 
 EXAMPLE:<p />
 
@@ -119,71 +122,26 @@ NAT Implementation:-<p />
             </Grid>
             <Spacer />
 
-            <Link as={RouterLink} to="/page6">
-                Previous Page
-                </Link>
-            <Spacer />
-            <Link as={RouterLink} to="/page8">
-                Next Page
-                </Link>
-            <Spacer />
-            <Link as={RouterLink} to="/">
-                Homepage
-                </Link>
+            <Box position="fixed" bottom="3" left="0">
 
+<Button as={RouterLink} to="/page6">
+    Previous Page
+</Button>
+<Spacer />
+<Button as={RouterLink} to="/page8" position="fixed" bottom="3" right="0">
+    Next Page
+</Button>
+<Spacer />
+</Box>
+            <Grid>
+            <Box justifySelf="center"> <Footer />
+            </Box></Grid>
 
 
         </Box>
     )
 }
-function SlideEx() {
-    const { isOpen, onToggle } = useDisclosure()
-    const color = useColorModeValue('purple.400', 'plum');
-    const textcolor = useColorModeValue('white', 'white');
-    return (
-        <>
-            <Button onClick={onToggle}> WHY IS CISCO PACKET TRACER USED ? </Button>
-            <Slide direction="bottom" in={isOpen} style={{ zIndex: 10 }}>
-                <Box
-                    p="40px"
-                    textColor={textcolor}
-                    mt="4"
-                    bg={color}
-                    rounded="md"
-                    shadow="md"
-                >
-                    <Text>
-                        Packet Tracer offers an effective, interactive environment for learning networking concepts and protocols. Most importantly, Packet Tracer helps students and instructors create their own
-                        virtual “network worlds” for exploration, experimentation, and explanation of networking concepts and technologies.
-            </Text>
-                </Box>
-            </Slide>
-        </>
-    )
-}
 
-
-
-
-
-export function RedirectButton() {
-
-    const textcolor = useColorModeValue('black', 'white');
-    const [instaRedirect, setInstaRedirect] = useState(false);
-    const btnClick = () => {
-        setInstaRedirect(true);
-    }
-
-    return (
-        <>
-            {instaRedirect ? <Redirect to="/cptdownload" /> : null}
-            <Button onClick={btnClick} isExternal textColor={textcolor} >
-
-                DOWNLOAD
-              </Button>
-        </>
-    )
-}
 function SizeExample() {
     const [size, setSize] = React.useState("md")
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -202,17 +160,21 @@ function SizeExample() {
                     onClick={() => handleClick(size)}
                     key={size}
                     m={4}
-                >{`MENU`}</Button>
+                >{`TOPICS`}</Button>
             ))}
 
             <Drawer onClose={onClose} isOpen={isOpen} size={size}>
                 <DrawerOverlay>
                     <DrawerContent>
-                        <DrawerHeader>{``}</DrawerHeader>
+                        <DrawerHeader>HONEYPOT</DrawerHeader>
                         <DrawerBody>
-                            {size === "full"
-                                ? `You're trapped 😆 , refresh the page to leave or press 'Esc' key.`
-                                : null}
+                            <Link href="#honeypot-desc">1. What is honeypot?</Link><br />
+                            <Link href="#honeypots-working">2. Working of honeypot</Link><br />
+                            <Link href="#example">3. Example</Link><br />
+                            <Link href="#splunk">4. What is splunk?</Link><br />
+                            <Link href="#IDS-and-IPS">5. IDS and IPS</Link><br />
+                            <Link href="#The-Differences-Between-IDS-and-IPS">6. The Differences Between IDS and IPS</Link><p />
+                            <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
                         </DrawerBody>
                     </DrawerContent>
                 </DrawerOverlay>

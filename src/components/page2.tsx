@@ -17,24 +17,31 @@ import {
     DrawerContent,
     DrawerHeader,
     DrawerOverlay,
+    Heading,
+   
 } from "@chakra-ui/react";
 
-import pngdark from "../resources/abcd1.png";
-import pnglite from "../resources/abcd.png";
+import connections from "../resources/connections.png";
+import ciscoui from "../resources/CISCOUI.png";
+import ND from "../resources/ND.png";
+import CD from "../resources/CD.png";
 
 import { Link as RouterLink, Redirect, Route } from "react-router-dom"
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
+import { Header } from "./header";
+import { Footer } from "./footer";
 
 
 export function Page2() {
     const color = useColorModeValue('purple.400', 'plum');
-    const textcolor = useColorModeValue('white', 'white');
+    const textcolor = useColorModeValue('white', 'black');
     return (
 
         <Box textAlign="center" fontSize="1xl">
             <Box textAlign="left" position="fixed">
                 <SizeExample />
             </Box>
+            <Box paddingtop="10" > <Header/></Box>
 
             <Grid minH="50vh" p={3}>
                 <ColorModeSwitcher justifySelf="flex-end" />
@@ -46,37 +53,61 @@ export function Page2() {
                             </Text>
 
                     </Box>
-                    <Text fontSize="3xl">
+                    <Text fontSize="3xl" id="intro">
                         INTRODUCTION TO CISCO PACKET TRACER
 
                         </Text>
-                    <Text width="90%" textAlign="center">
+                    <Text width="70%" textAlign="center">
                         Packet Tracer is a cross-platform visual simulation tool designed by Cisco Systems that allows users to create network topologies and imitate modern computer networks. The software
                         allows users to simulate the configuration of Cisco routers and switches using a simulated command line interface
                         </Text>
 
-                    <Text width="90%" textAlign="center">
+                    <Text width="90%" textAlign="center" id="download">
                         DOWNLOAD CPT BY CLICKING THE BELOW
                             </Text>
                     <RedirectButton />
                     <SlideEx />
-                </VStack>
+                    <Heading>
+                        Basic ui of cisco 
+                    </Heading>  <Text width="70%" textAlign="center">
+                    Cisco Packet Tracer is a fancy e-learning tools are made by Cisco that will simulate the workings of a network based on the topology and configuration imposed by the users exactly like the original. When you open Packet Tracer, by default you will be presented with the following interface:
+ 
+</Text>
+                    <Image src={ciscoui} width="70%" textAlign="center"/>
+                  
+                    
+                    <Text width="70%" textAlign="center" id="connections">
+                        • Connections :- This is the connection wires for connecting our Network with the help of these cables and wires. Some main connecting wires are as folows :- </Text>
+                        <Image src={connections} width="70%" textAlign="center"/>
+                   
+                    <Text width="70%" textAlign="center" id="nd">
+                    • Networking Devices: - This box contains the type of devices and connections available in Packet Tracer. The Device-Specific Selection Box will change depending on which type of device you choose. The top row of icons represents the category list consisting of: Networking Devices, End Devices, Components, Connections, Miscellaneous, and Multiuser. Each category contains at least one sub-category group. 
+                    </Text> <Image src={ND} width="70%" textAlign="center"/>
+                   
+                    <Text width="70%" textAlign="center"id="cd" size="lg">
+                    • Connection Devices:  - This box is where you choose specifically which devices you want to put in your network and which connections to make. In this box, you'll find devices that may have already been obsolete.  
+                    </Text> <Image src={CD} width="70%" textAlign="center"/>
+                 </VStack>
             </Grid>
             <Spacer />
 
-            <Link as={RouterLink} to="/page1">
-                Previous Page
-                </Link>
-            <Spacer />
-            <Link as={RouterLink} to="/page3">
-                Next Page
-                </Link>
-            <Spacer />
-            <Link as={RouterLink} to="/">
-                Homepage
-                </Link>
+            <Box position="fixed" bottom="3" left="0">
+
+                <Button as={RouterLink} to="/page1">
+                    Previous Page
+                </Button>
+                <Spacer />
+                <Button as={RouterLink} to="/page3" position="fixed" bottom="3" right="0">
+                    Next Page
+                </Button>
+                <Spacer />
+                </Box>
+           
 
 
+                <Grid>
+                <Box justifySelf="center"> <Footer />
+                </Box></Grid>
 
         </Box>
     )
@@ -147,17 +178,21 @@ function SizeExample() {
                     onClick={() => handleClick(size)}
                     key={size}
                     m={4}
-                >{`MENU`}</Button>
+                >{`TOPICS`}</Button>
             ))}
 
             <Drawer onClose={onClose} isOpen={isOpen} size={size}>
                 <DrawerOverlay>
                     <DrawerContent>
-                        <DrawerHeader>{``}</DrawerHeader>
+                        <DrawerHeader>HONEYPOT</DrawerHeader>
                         <DrawerBody>
-                            {size === "full"
-                                ? `You're trapped 😆 , refresh the page to leave or press 'Esc' key.`
-                                : null}
+                            <Link href="#intro">1. Intoduction to cpt</Link><br />
+                            <Link href="#download">2. Download link</Link><br />
+                            <Link href="#connections">3. connections</Link><br />
+                            <Link href="#nd">4. Networking devices</Link><br />
+                            <Link href="#cd">5. Connecting devices</Link><br />
+                           
+                            <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
                         </DrawerBody>
                     </DrawerContent>
                 </DrawerOverlay>

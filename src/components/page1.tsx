@@ -1,12 +1,10 @@
 import * as React from "react"
-import { useState } from "react"
 import {
     Box,
     Text,
     Link,
     VStack,
-    Code,
-    Stack,
+  
     Grid,
     Spacer,
     Button,
@@ -16,13 +14,14 @@ import {
     DrawerHeader,
     DrawerOverlay,
     useDisclosure,
-    color,
     useColorModeValue,
     Heading,
 } from "@chakra-ui/react"
 import { Link as RouterLink, Redirect } from "react-router-dom"
 
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
+import { Header } from "./header";
+import { Footer } from "./footer"
 export function Page1() {
 
     const color = useColorModeValue('purple.400', 'plum');
@@ -35,14 +34,13 @@ export function Page1() {
                 <Box textAlign="left" position="fixed">
                     <SizeExample />
                 </Box>
-                <Box textAlign="left">
-                    
-                </Box>
+                <Box paddingtop="10" > <Header/></Box>
+                
                 
                 <Grid minH="50vh" p={3}>
                 <VStack spacing={2}>
                     <ColorModeSwitcher justifySelf="flex-end" />
-                    <Box bg={color} w="auto" p={4} textColor={textcolor} opacity="50%" borderRadius="full">
+                    <Box bg={color} w="auto" p={4} textColor={textcolor} opacity="100%" borderRadius="full">
                         <Text fontSize="5xl">
                             Networking & it’s Security
                             </Text></Box>
@@ -52,7 +50,7 @@ export function Page1() {
                         <Text width="50%">
                         Network security is a broad term that covers a multitude of technologies, devices and processes. In its simplest term, it is a set of rules and configurations designed to protect the integrity, confidentiality and accessibility of computer networks and data using both software and hardware technologies.
                         </Text>
-                        <Text fontSize="2xl" fontWeight="bold">
+                        <Text fontSize="2xl" fontWeight="bold" id="what-is">
                         What is network security?
                         </Text>
                         <Text fontSize="1xl" width="50%">
@@ -60,7 +58,7 @@ export function Page1() {
 
                         Securing a network requires a complex combination of hardware devices, such as routers, firewalls and anti-malware software applications. Government agencies and businesses employ highly skilled information security analysts to implement security plans and constantly monitor the efficacy of these plans.
                     </Text>
-                    <Text>
+                    <Text id="importance"  fontSize="2xl" fontWeight="bold">
                         
 Why is network security important?
                     </Text>
@@ -71,82 +69,64 @@ Why is network security important?
                     </VStack>
                     </Grid>
                 
-                <Link as={RouterLink} to="/">
-                    Previous Page
-                </Link>
-                <Spacer />
-                <Link as={RouterLink} to="/page2"
-                >
-                    Next Page
-              </Link>
+                    <Box position="fixed" bottom="3" left="0">
 
-
-                <Spacer />
-                <Link as={RouterLink} to="/"
-                >
-                    Homepage
-              </Link>
-                <Spacer />
-
-                <RedirectButton />
+<Button as={RouterLink} to="/">
+    Previous Page
+</Button>
+<Spacer />
+<Button as={RouterLink} to="/page2" position="fixed" bottom="3" right="0">
+    Next Page
+</Button>
+<Spacer />
+</Box>
                 <Spacer />
 
 
+                <Grid>
+                <Box justifySelf="center"> <Footer />
+                </Box></Grid>
             </Box>
         )
     }
 
 
 
-export function RedirectButton() {
-    const [instaRedirect, setInstaRedirect] = useState(false);
-    const btnClick = () => {
-        setInstaRedirect(true);
+
+    function SizeExample() {
+        const [size, setSize] = React.useState("md")
+        const { isOpen, onOpen, onClose } = useDisclosure()
+    
+        const handleClick = (newSize: React.SetStateAction<string>) => {
+            setSize(newSize)
+            onOpen()
+        }
+    
+        const sizes = ["xs"]
+    
+        return (
+            <>
+                {sizes.map((size) => (
+                    <Button
+                        onClick={() => handleClick(size)}
+                        key={size}
+                        m={4}
+                    >{`TOPICS`}</Button>
+                ))}
+    
+                <Drawer onClose={onClose} isOpen={isOpen} size={size}>
+                    <DrawerOverlay>
+                        <DrawerContent>
+                            <DrawerHeader>HONEYPOT</DrawerHeader>
+                            <DrawerBody>
+                                <Link href="#what-is">1. What is network security?</Link><br />
+                                <Link href="#importance">2. Why is network security important?</Link><br />
+                                <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
+                            </DrawerBody>
+                        </DrawerContent>
+                    </DrawerOverlay>
+                </Drawer>
+            </>
+        )
     }
-
-    return (
-        <>
-            {instaRedirect ? <Redirect to="/instagram" /> : null}
-            <Button onClick={btnClick} isExternal colorScheme="teal" >
-
-                instagram
-              </Button>
-        </>
-    )
-}
-function SizeExample() {
-    const [size, setSize] = React.useState("md")
-    const { isOpen, onOpen, onClose } = useDisclosure()
-
-    const handleClick = (newSize: React.SetStateAction<string>) => {
-        setSize(newSize)
-        onOpen()
-    }
-
-    const sizes = ["xs"]
-
-    return (
-        <>
-            {sizes.map((size) => (
-                <Button
-                    onClick={() => handleClick(size)}
-                    key={size}
-                    m={4}
-                >{`MENU`}</Button>
-            ))}
-
-            <Drawer onClose={onClose} isOpen={isOpen} size={size}>
-                <DrawerOverlay>
-                    <DrawerContent>
-                        <DrawerHeader>{``}</DrawerHeader>
-                        <DrawerBody>
-                            {size === "full"
-                                ? `You're trapped 😆 , refresh the page to leave or press 'Esc' key.`
-                                : null}
-                        </DrawerBody>
-                    </DrawerContent>
-                </DrawerOverlay>
-            </Drawer>
-        </>
-    )
-}
+    

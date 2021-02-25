@@ -10,7 +10,6 @@ import {
     Grid,
     Spacer,
     useColorModeValue,
-    UnorderedList,
     ListItem,
     OrderedList,
     Button,
@@ -20,24 +19,13 @@ import {
     DrawerHeader,
     DrawerOverlay,
     useDisclosure,
-    Heading,
-    List,
-    Table,
+    Heading,  
     TableCaption,
     Tbody,
     Td,
-    Tfoot,
-    Th,
     Thead,
     Tr,
-    Tooltip,
-    WrapItem,
-    Wrap,
-    Slide,
     Code,
-    Radio,
-    RadioGroup,
-    Stack,
     Modal,
     ModalBody,
     ModalCloseButton,
@@ -45,8 +33,12 @@ import {
     ModalFooter,
     ModalHeader,
     ModalOverlay,
+    Slide,
+    Table,
+    Th,
 } from "@chakra-ui/react";
-
+import { Header } from "./header";
+import { Footer } from "./footer";
 import imagerouter from "../resources/rouer.png";
 import imagecoco from "../resources/ccoco-1.png";
 import imagecoco1 from "../resources/ccoco-2.png";
@@ -63,6 +55,7 @@ export function Page4() {
             <Box textAlign="left" position="fixed">
                 <SizeExample />
             </Box>
+            <Box paddingtop="10" > <Header/></Box>
             <Grid minH="50vh" p={3}>
                 <ColorModeSwitcher justifySelf="flex-end" />
                 <VStack>
@@ -71,7 +64,7 @@ export function Page4() {
                             Networking & it’s Security
                             </Text>
                     </Box>
-                    <Text fontWeight="bold" fontSize="3xl">
+                    <Text fontWeight="bold" fontSize="3xl" id="router">
                         ROUTER
 </Text>
                     <Text width="70%" textAlign="left"  >
@@ -86,14 +79,14 @@ export function Page4() {
                             <ListItem>Possible route to all neighbors so that they can guide to destination.</ListItem>
                         </OrderedList>
                     </Box>
-                    <Heading>Concepts:</Heading>
+                    <Heading id="concepts">Concepts:</Heading>
                     <OrderedList width="fit-content" textAlign="left">
                         <ListItem>Ports</ListItem>
                         <ListItem>Router Rules</ListItem>
                         <ListItem>Router Modes</ListItem>
                         <ListItem>Router Basic Configuration</ListItem>
                     </OrderedList>
-                    <Heading>
+                    <Heading id="port">
                         ROUTER PORTS</Heading>
                     <Text >
                         On basis of functionality :</Text>
@@ -101,7 +94,7 @@ export function Page4() {
                         <ListItem>Interface Port</ListItem>
                         <ListItem>Line Port</ListItem>
                     </OrderedList>
-                    <Table variant="simple">
+                    <Table variant="simple" >
                         <TableCaption>TYPES OF PORT </TableCaption>
                         <Thead>
                             <Tr>
@@ -130,7 +123,7 @@ export function Page4() {
                     </Table><SlideEx />
                     <Image src={imagerouter}></Image>
                     <Text width="70%" textAlign="left" >
-                        <Heading>ROUTER MODES  </Heading>
+                        <Heading id="modes">ROUTER MODES  </Heading>
                         A router is a layer 3 device used to forward packet from one network to another. It forwards the packet through one of its port on the basis of destination IP address and the entry in the routing table. By using routing table, it finds an optimised path between the source and destination network.<br />
 
                         Let’s discuss about about Cisco router different modes.<br />
@@ -191,11 +184,11 @@ We can enter in this mode when we interrupt boot process of the router. Generall
                         </Tr>
                     </Table>
                     <PlacementExample />
-                    <Heading>TYPES OF ROUTING </Heading>
+                    <Heading id="types">TYPES OF ROUTING </Heading>
                     <Text width="70%" textAlign="left" >
                         <p>Routing is a process which is performed by layer 3 (or network layer) devices in order to deliver the packet by choosing an optimal path from one network to another.</p>
                         <p>There are 3 types of routing:</p>
-                        <Heading >1. Static routing –</Heading>
+                        <Heading id="static" >1. Static routing –</Heading>
                         <p>Static routing is a process in which we have to manually add routes in routing table.</p>
                         <p>Advantages –</p>
                         <p>No routing overhead for router CPU which means a cheaper router can be used to do routing.</p>
@@ -204,15 +197,15 @@ We can enter in this mode when we interrupt boot process of the router. Generall
                         <p>Disadvantage –</p>
                         <p>For a large network, it is a hectic task for administrator to manually add each route for the network in the routing table on each router.</p>
                         <p>The administrator should have good knowledge of the topology. If a new administrator comes, then he has to manually add each route so he should have very good knowledge of the routes of the topology.</p>
-                        <p>Configuration –</p>
+                        
                     </Text>
                     <Image src={imagecoco} backgroundColor={color}></Image >
                     <Cptlol/>
 
 
+<Heading textAlign="left" width="70%">Configuration –</Heading>
 
-
-                    <Text width="70%" textAlign="left" >
+                    <Text width="70%" textAlign="left"  id="config">
                         <Code>R1 having IP address 172.16.10.6/30 on s0/0/1, 192.168.10.1/24 on fa0/0.</Code>
                         <Code>R2 having IP address 172.16.10.2/30 on s0/0/0, 192.168.20.1/24 on fa0/0.</Code>
                         <Code>R3 having IP address 172.16.10.5/30 on s0/1, 172.16.10.1/30 on s0/0, 10.10.10.1/24 on fa0/0.</Code>
@@ -228,7 +221,7 @@ We can enter in this mode when we interrupt boot process of the router. Generall
                         <p><Code>R1(config)#ip route 192.168.10.0 255.255.255.0 172.16.10.5</Code></p>
                         <p><Code>R1(config)#ip route 10.10.10.0 255.255.255.0 172.16.10.5</Code></p>
                         <p><Code>R1(config)#ip route 172.16.10.0 255.255.255.0 172.16.10.5</Code></p>
-                        <Heading >2. Default Routing –</Heading></Text>
+                        <Heading id="default">2. Default Routing –</Heading></Text>
                     <Text width="70%" textAlign="left" >
                         <p>This is the method where the router is configured to send all packets towards a single router (next hop). It doesn’t matter to which network the packet belongs, it is forwarded out to router which is configured for default routing. It is generally used with stub routers. A stub router is a router which has only one route to reach all other networks.</p>
                         <p>Configuration –</p>
@@ -239,7 +232,7 @@ We can enter in this mode when we interrupt boot process of the router. Generall
                         <Code>R1(config)#ip route 0.0.0.0 0.0.0.0  172.16.10.5</Code><p />
                         Now configuring default routing for R2:<p />
                         <Code>R2(config)#ip route 0.0.0.0 0.0.0.0  172.16.10.1</Code><p />
-                        <Heading>3. Dynamic Routing –</Heading>
+                        <Heading id="dynamic">3. Dynamic Routing –</Heading>
                         Dynamic routing makes automatic adjustment of the routes according to the current state of the route in the routing table. Dynamic routing uses protocols to discover network destinations and the routes to reach it. <Link as={RouterLink} to="/page5" color="teal.500" >
                             RIP
                 </Link> and <Link as={RouterLink} to="/page5" color="teal.500" >
@@ -259,18 +252,22 @@ We can enter in this mode when we interrupt boot process of the router. Generall
             </Grid>
             <Spacer />
 
-            <Link as={RouterLink} to="/page3" >
-                Previous Page
-                </Link>
+            <Box position="fixed" bottom="3" left="0">
 
-            <Link as={RouterLink} to="/page5">
-                Next Page
-                </Link>
-            <Spacer />
-            <Link as={RouterLink} to="/">
-                Homepage
-                </Link>
+                <Button as={RouterLink} to="/page3">
+                    Previous Page
+                </Button>
+                <Spacer />
+                <Button as={RouterLink} to="/page5" position="fixed" bottom="3" right="0">
+                    Next Page
+                </Button>
+                <Spacer />
+                </Box>
+           
 
+                <Grid>
+                <Box justifySelf="center"> <Footer />
+                </Box></Grid>
 
 
         </Box >
@@ -278,18 +275,6 @@ We can enter in this mode when we interrupt boot process of the router. Generall
 }
 
 
-
-function MyImage() {
-    const source = (imagerouter);
-    const color = useColorModeValue('purple.400', 'plum');
-    const textcolor = useColorModeValue('white', 'white');
-    return (
-        <Image
-            src={source}
-            boxSize="550px"
-        />
-    );
-}
 function SizeExample() {
     const [size, setSize] = React.useState("md")
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -308,15 +293,25 @@ function SizeExample() {
                     onClick={() => handleClick(size)}
                     key={size}
                     m={4}
-                >{`MENU`}</Button>
+                >{`TOPICS`}</Button>
             ))}
 
             <Drawer onClose={onClose} isOpen={isOpen} size={size}>
                 <DrawerOverlay>
                     <DrawerContent>
-                        <DrawerHeader>{`DNKDM`}</DrawerHeader>
+                        <DrawerHeader>HONEYPOT</DrawerHeader>
                         <DrawerBody>
-                            LINKSK
+                            <Link href="#router">1. What is a Router?</Link><br />
+                            <Link href="#concepts">2. Concepts</Link><br />
+                            <Link href="#port">3. Ports</Link><br />
+                            <Link href="#modes">4. Modes of Router</Link><br />
+                            <Link href="#types">5. Types of Routing</Link><br/>
+                            <Link href="#config">6. Configuration</Link><br />
+                            <Link href="#static">7. Static Routing</Link><p />
+                            <Link href="#default">8. Default Routing</Link><p />
+                            <Link href="#dynamic">9. Dynamic Routing</Link><p />
+                            
+                            <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
                         </DrawerBody>
                     </DrawerContent>
                 </DrawerOverlay>
@@ -324,6 +319,7 @@ function SizeExample() {
         </>
     )
 }
+
 function SlideEx() {
     const { isOpen, onToggle } = useDisclosure()
     const color = useColorModeValue('purple.400', 'plum');

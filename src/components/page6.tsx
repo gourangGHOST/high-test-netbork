@@ -25,10 +25,12 @@ import {
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
 import pics from "../resources/switching.png"
 import vlan from "../resources/vlan.png"
+import { Header } from "./header";
+import { Footer } from "./footer";
 export function Page6() {
 
     const color = useColorModeValue('purple.400', 'plum');
-    const textcolor = useColorModeValue('white', 'white');
+    const textcolor = useColorModeValue('white', 'black');
     return (
 
 
@@ -41,20 +43,22 @@ export function Page6() {
                 <Box textAlign="left" position="fixed">
                     <SizeExample />
                 </Box>
+                <Box paddingtop="10" > <Header/></Box>
                 <VStack>
                     <Box bg={color} w="auto" p={4} textColor={textcolor} opacity="100%" borderRadius="full">
                         <Text fontSize="5xl" >
                             Networking & it’s Security
                             </Text>
                     </Box >
-                    <Heading>
+                    <Heading id=
+                    "switching"> 
                         SWITCHING
                     </Heading>
                     <Text width="70%" >
                         Switching is process to forward packets coming in from one port to a port leading towards the destination. When data comes on a port it is called ingress, and when data leaves a port or goes out it is called egress. A communication system may include number of switches and nodes.
 
                     </Text>
-                    <Heading>Switch Ports:</Heading>
+                    <Heading id="ports">Switch Ports:</Heading>
                     <Text width="70%">
                         1. Access Port (switch to pc )<p />
 2. Trunk Port (switch to switch)<p />
@@ -71,20 +75,22 @@ Switch Modes: (Similar to router modes)<p />
 2. Privilege Mode<p />
 3. Global Configuration Mode<p />
 ** Switch has memory which stores MAC addresses.<p />
-                        </Text><Image src={pics}></Image>
-Switch Configuration: <p />
+                        </Text><Image src={pics}></Image><Text id="configs" width="70%" textAlign="left"><Heading>
+Switch Configuration: </Heading>
+CLI:<p />
+</Text>
 <Text width="70%">
-CLI:</Text>
 
-                    <OrderedList textAlign="left" width="60%">
-                        <ListItem>SWITCH&gt;EN</ListItem>
-                        <ListItem>SWITCH#CONF T</ListItem>
-                        <ListItem>SWITCH(CONFIG)# INTERFACE FASTETHERNET0/2</ListItem>
-                        <ListItem>SWITCH(CONFIG)# SWITCHPORT MODE ACCESS</ListItem>
-                        <ListItem>SWITCH(CONFIG)#EXIT</ListItem>
-                    </OrderedList>
+<Code>
+                   
+                        SWITCH&gt;EN<br/>
+                        SWITCH#CONF T<br/>
+                        SWITCH(CONFIG)# INTERFACE FASTETHERNET0/2<br/>
+                        SWITCH(CONFIG)# SWITCHPORT MODE ACCESS<br/>
+                        SWITCH(CONFIG)#EXIT<br/>
+                    </Code></Text>
                     <Text width="70%">
-                        <Heading>VLAN : </Heading>
+                        <Heading id="vlan">VLAN : </Heading>
                         Full form is Virtual LAN. A VLAN is a group of devices on one or more LANs that are configured to communicate as if they were attached to the same wire, when in fact they are located on a number of different LAN segments. Because VLANs are based on logical instead of physical connections, they are extremely flexible.<p />
 
                         <Heading>SUBNETTING: (grouping)</Heading>
@@ -99,7 +105,7 @@ VLAN Configuration Steps:<p />
 4. Configure interface (ACCESS / TRUNK).<p />
 5. Link interface with VLAN.</Text>
 
-                    <Text width="70%">
+                    <Text width="70%" id="configvlan">
                         PRACTICAL:<p />
 0/2 and 0/3 - SALES VLAN 10<p />
 0/4 and 0/5 - HR VLAN 20<p />
@@ -127,19 +133,26 @@ If u need to check whether u have added interfaces successfully or not, go with 
                     
 
 
-                    <Link as={RouterLink} to="/page5" >
-                        previous page
-                </Link>
-                    <Link as={RouterLink} to="/page7"  >
-                        next page
-                </Link>
-                    <Link as={RouterLink} to="/"  >
-                        Homepage
-                </Link>
+                        <Box position="fixed" bottom="3" left="0">
+
+<Button as={RouterLink} to="/page5">
+    Previous Page
+</Button>
+<Spacer />
+<Button as={RouterLink} to="/page7" position="fixed" bottom="3" right="0">
+    Next Page
+</Button>
+<Spacer />
+</Box>
+                    
 
                 </VStack>
 
             </Grid>
+            <Grid>
+            <Box justifySelf="center"> <Footer />
+            </Box></Grid>
+
         </Box>
     )
 }
@@ -163,17 +176,20 @@ function SizeExample() {
                     onClick={() => handleClick(size)}
                     key={size}
                     m={4}
-                >{`MENU`}</Button>
+                >{`TOPICS`}</Button>
             ))}
 
             <Drawer onClose={onClose} isOpen={isOpen} size={size}>
                 <DrawerOverlay>
                     <DrawerContent>
-                        <DrawerHeader>{``}</DrawerHeader>
+                        <DrawerHeader>SWITCHING</DrawerHeader>
                         <DrawerBody>
-                            {size === "full"
-                                ? `You're trapped 😆 , refresh the page to leave or press 'Esc' key.`
-                                : null}
+                            <Link href="#switching">1. What is swtch?</Link><br />
+                            <Link href="#ports">2. Ports </Link><br />
+                            <Link href="#configs">3. Configuration of switch</Link><br />
+                            <Link href="#vlan">3. VLAN</Link><br />
+                            <Link href="#configvlan">4. Configurationof vlan</Link><br />
+                            <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
                         </DrawerBody>
                     </DrawerContent>
                 </DrawerOverlay>
@@ -181,4 +197,5 @@ function SizeExample() {
         </>
     )
 }
+
 

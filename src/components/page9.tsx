@@ -26,17 +26,20 @@ import pnglite from "../resources/abcd.png";
 
 import { Link as RouterLink, Redirect, Route } from "react-router-dom"
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
+import { Header } from "./header";
+import { Footer } from "./footer";
 
 
 export function Page9() {
     const color = useColorModeValue('purple.400', 'plum');
-    const textcolor = useColorModeValue('white', 'white');
+    const textcolor = useColorModeValue('white', 'black');
     return (
 
         <Box textAlign="center" fontSize="2xl">
             <Box textAlign="left" position="fixed">
                 <SizeExample />
             </Box>
+            <Box paddingtop="10" > <Header/></Box>
 
             <Grid minH="50vh" p={3}>
                 <ColorModeSwitcher justifySelf="flex-end" />
@@ -52,7 +55,7 @@ export function Page9() {
                     
                     Network scanning
                         </Text>
-                    <Text width="70%" textAlign="left">
+                    <Text width="70%" textAlign="left" id="networkscanning">
                     Network scanning refers to the use of a computer network to gather information regarding computing systems. Network scanning is mainly used for security assessment, system maintenance, and also for performing attacks by attackers.<p/>
 Tools that we can used for network scanning are : →<OrderedList>
 <ListItem>Fing App to identify connected devices, troubleshoot network and device issues,scan network , detect network intruders and run Wi-Fi and internet speed tests anywhere.</ListItem>
@@ -66,70 +69,28 @@ The purpose of network scanning is to manage, maintain, and secure the system us
             </Grid>
             <Spacer />
 
-            <Link as={RouterLink} to="/page8">
-                Previous Page
-                </Link>
-            <Spacer />
-            <Link as={RouterLink} to="/page10">
-                Next Page
-                </Link>
-            <Spacer />
-            <Link as={RouterLink} to="/">
-                Homepage
-                </Link>
+            <Box position="fixed" bottom="3" left="3">
+
+                <Button as={RouterLink} to="/page8">
+                    Previous Page
+                </Button>
+                <Spacer />
+                <Button as={RouterLink} to="/page10" position="fixed" bottom="3" right="3">
+                    Next Page
+                </Button>
+                <Spacer />
+                </Box>
+            
+                <Grid>
+                <Box justifySelf="center"> <Footer />
+                </Box></Grid>
 
 
 
         </Box>
     )
 }
-function SlideEx() {
-    const { isOpen, onToggle } = useDisclosure()
-    const color = useColorModeValue('purple.400', 'plum');
-    const textcolor = useColorModeValue('white', 'white');
-    return (
-        <>
-            <Button onClick={onToggle}> WHY IS CISCO PACKET TRACER USED ? </Button>
-            <Slide direction="bottom" in={isOpen} style={{ zIndex: 10 }}>
-                <Box
-                    p="40px"
-                    textColor={textcolor}
-                    mt="4"
-                    bg={color}
-                    rounded="md"
-                    shadow="md"
-                >
-                    <Text>
-                    
-            </Text>
-                </Box>
-            </Slide>
-        </>
-    )
-}
 
-
-
-
-
-export function RedirectButton() {
-
-    const textcolor = useColorModeValue('black', 'white');
-    const [instaRedirect, setInstaRedirect] = useState(false);
-    const btnClick = () => {
-        setInstaRedirect(true);
-    }
-
-    return (
-        <>
-            {instaRedirect ? <Redirect to="/cptdownload" /> : null}
-            <Button onClick={btnClick} isExternal textColor={textcolor} >
-
-                DOWNLOAD
-              </Button>
-        </>
-    )
-}
 function SizeExample() {
     const [size, setSize] = React.useState("md")
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -148,7 +109,7 @@ function SizeExample() {
                     onClick={() => handleClick(size)}
                     key={size}
                     m={4}
-                >{`MENU`}</Button>
+                >{`TOPICS`}</Button>
             ))}
 
             <Drawer onClose={onClose} isOpen={isOpen} size={size}>
@@ -156,9 +117,8 @@ function SizeExample() {
                     <DrawerContent>
                         <DrawerHeader>{``}</DrawerHeader>
                         <DrawerBody>
-                            {size === "full"
-                                ? `You're trapped 😆 , refresh the page to leave or press 'Esc' key.`
-                                : null}
+                            <Link href="#networkscanning">NETWROK SCANNING</Link>
+                            <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
                         </DrawerBody>
                     </DrawerContent>
                 </DrawerOverlay>
