@@ -32,17 +32,17 @@ export function Page5() {
     const textcolor = useColorModeValue('white', 'black');
     return (
 
-        <Box textAlign="center" fontSize="1xl">
-            <Box textAlign="left" position="fixed">
+        <Box textAlign="center" fontSize="1xl" >
+            <Box textAlign="left" position="fixed" >
                 <SizeExample />
             </Box>
-            <Box paddingtop="10" > <Header /></Box>
+            <Box paddingtop="10"  > <Header /></Box>
 
             <Grid minH="50vh" p={3}>
                 <ColorModeSwitcher justifySelf="flex-end" />
                 <VStack>
 
-                    <Box bg={color} w="auto" p={4} textColor={textcolor} opacity="100%" borderRadius="full">
+                    <Box bg={color} width="-moz-max-content" p={10} textColor={textcolor} opacity="100%" borderRadius="50%">
                         <Text fontSize="5xl" >
                             Networking & it’s Security
                             </Text>

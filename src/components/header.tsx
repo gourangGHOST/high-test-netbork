@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Link as RouterLink, useLocation } from "react-router-dom"
 
 import {
+    Box,
     Button,
     ButtonGroup,
     HStack,
@@ -153,15 +154,15 @@ export function Header() {
 
 
     return (
-
-        <HStack padding={1} paddingTop="20" >
+        <Box >
+        <HStack padding={3} paddingTop="20" >
             <Spacer/>
             <ButtonGroup size="sm" colorScheme="facebook">
                 {page1 ? null : <Button as={RouterLink} to="/page1">Getting started -{">"}</Button>}
                 {page2 ? null : <Button as={RouterLink} to="/page2">Cisco packet tracer</Button>}
                 {page3 ? null : <Button as={RouterLink} to="/page3">IP ADDRESS</Button>}
                 {page4 ? null : <Button as={RouterLink} to="/page4">ROUTERS</Button>}
-                {page5 ? null : <Button as={RouterLink} to="/page5">RIP AND ORGIP</Button>}
+                {page5 ? null : <Button as={RouterLink} to="/page5">RIP AND ORGIP</Button>} 
                 {page6 ? null : <Button as={RouterLink} to="/page6">SWITCHING</Button>}
                 {page7 ? null : <Button as={RouterLink} to="/page7">ACL AND NAT</Button>}
                 {page8 ? null : <Button as={RouterLink} to="/page8"> ASA FIREWALL</Button>}
@@ -171,7 +172,7 @@ export function Header() {
             </ButtonGroup>
             <Spacer/>
         </HStack>
-
+        </Box>
     )
 
 }

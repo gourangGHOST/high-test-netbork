@@ -47,8 +47,8 @@ export function Page2() {
                 <ColorModeSwitcher justifySelf="flex-end" />
                 <VStack>
 
-                    <Box bg={color} w="auto" p={4} textColor={textcolor} opacity="100%" borderRadius="full">
-                        <Text fontSize="5xl" >
+                <Box bg={color} width="-moz-max-content" p={10} textColor={textcolor} opacity="100%" borderRadius="50%">
+      <Text fontSize="5xl" >
                             Networking & it’s Security
                             </Text>
 
@@ -184,7 +184,7 @@ function SizeExample() {
             <Drawer onClose={onClose} isOpen={isOpen} size={size}>
                 <DrawerOverlay>
                     <DrawerContent>
-                        <DrawerHeader>HONEYPOT</DrawerHeader>
+                        <DrawerHeader>CPT</DrawerHeader>
                         <DrawerBody>
                             <Link href="#intro">1. Intoduction to cpt</Link><br />
                             <Link href="#download">2. Download link</Link><br />

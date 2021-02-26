@@ -31,7 +31,7 @@ export function Page1() {
         return (
 
             <Box textAlign="center" fontSize="xl">
-                <Box textAlign="left" position="fixed">
+                <Box textAlign="left" >
                     <SizeExample />
                 </Box>
                 <Box paddingtop="10" > <Header/></Box>
@@ -40,14 +40,14 @@ export function Page1() {
                 <Grid minH="50vh" p={3}>
                 <VStack spacing={2}>
                     <ColorModeSwitcher justifySelf="flex-end" />
-                    <Box bg={color} w="auto" p={4} textColor={textcolor} opacity="100%" borderRadius="full">
-                        <Text fontSize="5xl">
+                    <Box bg={color} width="-moz-max-content" p={10} textColor={textcolor} opacity="100%" borderRadius="50%">
+     <Text fontSize="5xl">
                             Networking & it’s Security
                             </Text></Box>
                     <Spacer /><Heading>
                     Getting Started </Heading>
                         <Spacer />
-                        <Text width="50%">
+                        <Text width="70%">
                         Network security is a broad term that covers a multitude of technologies, devices and processes. In its simplest term, it is a set of rules and configurations designed to protect the integrity, confidentiality and accessibility of computer networks and data using both software and hardware technologies.
                         </Text>
                         <Text fontSize="2xl" fontWeight="bold" id="what-is">
@@ -117,7 +117,7 @@ Why is network security important?
                 <Drawer onClose={onClose} isOpen={isOpen} size={size}>
                     <DrawerOverlay>
                         <DrawerContent>
-                            <DrawerHeader>HONEYPOT</DrawerHeader>
+                            <DrawerHeader>TOPICS</DrawerHeader>
                             <DrawerBody>
                                 <Link href="#what-is">1. What is network security?</Link><br />
                                 <Link href="#importance">2. Why is network security important?</Link><br />

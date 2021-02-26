@@ -3,26 +3,17 @@ import { Link as RouterLink } from "react-router-dom"
 
 import {
     Box,
-    Text,
-    Link,
-    HStack,
-    VStack,
-    Code,
     Grid,
+    Text,
     Image,
     Button,
-    Drawer,
-    DrawerBody,
-    DrawerContent,
-    DrawerHeader,
-    DrawerOverlay,
-    useDisclosure,
-    background,
     useColorModeValue,
     ButtonGroup,
+    Spacer,
 } from "@chakra-ui/react"
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
-import qwer from "../resources/qwer.jpg"
+import hacking from "../resources/hacking.jpg"
+import first from "../resources/first.jpg"
 import { Footer } from "./footer"
 
 export function HomeComponent() {
@@ -34,17 +25,11 @@ export function HomeComponent() {
 
 
         <Box>
-            <Grid minH="100vh" p={3}>
+            <Grid minH="200vh" p={3}>
 
                 <ColorModeSwitcher justifySelf="flex-end" />
-
-                
-                    
-
-
-
-
-                        <ButtonGroup colorScheme="teal" variant="ghost" fontSize="2xl" size="sm" >
+                <Box paddingtop="100%">
+                            <ButtonGroup colorScheme="teal" variant="ghost" fontSize="2xl" size="sm" >
                             <Button as={RouterLink} to="/page1">Getting started -{">"}</Button>
                             <Button as={RouterLink} to="/page2">Cisco packet tracer</Button>
                             <Button as={RouterLink} to="/page3">IP ADDRESS</Button>
@@ -58,18 +43,20 @@ export function HomeComponent() {
 
 
                         </ButtonGroup>
-                    
+                    </Box>
+
                 
 
-
+               
+                        <Image justifySelf="center" src={first}></Image>
+                        <Text textAlign="center" width="60%">
+                            In this u will learn the basics about Cisco packet tracer, IP address , Routers , Types of routing , switching , Types of switching , ASA firewall , Network scanning , Honeypot</Text>
+                        <Image justifySelf="center" src={hacking}></Image>
+                        <Box justifySelf="center"> <Footer /></Box>
 
 
             </Grid>
 
-
-            <Grid>
-                <Box justifySelf="center"> <Footer />
-                </Box></Grid>
 </Box>
     )
     }
@@ -77,13 +64,14 @@ export function HomeComponent() {
 
 
 function MyImage() {
-    const source = (qwer);
+    const source = (hacking);
+    const source2=(first);
     const color = useColorModeValue('purple.400', 'plum');
     const textcolor = useColorModeValue('white', 'white');
-    return (
+    return (<Box>
             <Image
                 src={source}
-
             />
+            <Image src={source2}/></Box>
     );
 }

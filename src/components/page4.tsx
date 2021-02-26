@@ -59,8 +59,8 @@ export function Page4() {
             <Grid minH="50vh" p={3}>
                 <ColorModeSwitcher justifySelf="flex-end" />
                 <VStack>
-                    <Box bg={color} w="auto" p={4} textColor={textcolor} opacity="50%" borderRadius="full">
-                        <Text fontSize="5xl" >
+                <Box bg={color} width="-moz-max-content" p={10} textColor={textcolor} opacity="100%" borderRadius="50%">
+      <Text fontSize="5xl" >
                             Networking & it’s Security
                             </Text>
                     </Box>

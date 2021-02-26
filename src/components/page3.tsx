@@ -61,8 +61,8 @@ export function Page3() {
                     <Box>
 
                     </Box>
-                    <Box bg={color} w="auto" p={4} textColor={textcolor} opacity="100%" borderRadius="full">
-                        <Text fontSize="5xl">
+                    <Box bg={color} width="-moz-max-content" p={10} textColor={textcolor} opacity="100%" borderRadius="50%">
+     <Text fontSize="5xl">
                             Networking & it’s Security
                         </Text>
                     </Box>
