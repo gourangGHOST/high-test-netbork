@@ -3,7 +3,6 @@ import * as React from "react"
 import {
     Box,
     Text,
-    Link,
     Image,
     VStack,
     Code,
@@ -25,12 +24,6 @@ import {
     Button,
     Slide,
     useDisclosure,
-    Drawer,
-    DrawerBody,
-    DrawerContent,
-    DrawerHeader,
-    DrawerOverlay,
-    Heading,
 } from "@chakra-ui/react";
 
 import pngdark from "../resources/abcd1.png";
@@ -38,20 +31,34 @@ import pnglite from "../resources/abcd.png";
 import image from "../resources/Screenshot 2021-02-13 144905.png"
 import { Header } from "./header";
 import { Footer } from "./footer";
+import { Topics } from "./topics";
 
-
-import { Link as RouterLink, Redirect } from "react-router-dom"
+import { Link as RouterLink } from "react-router-dom"
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
 
 
 export function Page3() {
     const color = useColorModeValue('purple.400', 'plum');
     const textcolor = useColorModeValue('white', 'black');
+    const topicList = [
+        {href: "#ip", content: "1. Ip address"},
+        {href: "#steps", content: "2. Steps to know ur ip "},
+        {href: "#classes", content: "3. Classes of ip "},
+        {href: "#types", content: "4. Types of ip"},
+        {href: "#diffrence4and6", content: "5. Diffrence between ipv4and ipv6 "},
+        {href: "#subneting", content: "6. Subnetting "},
+        {href: "#nid and bid", content: "7. NID and BID "},
+        {href: "#mask", content: "8. Mask "},
+        {href: "#practical", content: "9. Practical "},
+        <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
+        
+    ];
     return (
 
         <><Box textAlign="center" fontSize="xl">
             <Box textAlign="left" position="fixed">
-                <SizeExample />
+            <Topics title="IP ADDRESS" topics={topicList} />
+
             </Box>
             <Box paddingtop="10"> <Header /></Box>
 
@@ -362,51 +369,6 @@ function SlideEx() {
             </Text>
                 </Box>
             </Slide>
-        </>
-    )
-}
-
-
-function SizeExample() {
-    const [size, setSize] = React.useState("md")
-    const { isOpen, onOpen, onClose } = useDisclosure()
-
-    const handleClick = (newSize: React.SetStateAction<string>) => {
-        setSize(newSize)
-        onOpen()
-    }
-
-    const sizes = ["xs"]
-
-    return (
-        <>
-            {sizes.map((size) => (
-                <Button
-                    onClick={() => handleClick(size)}
-                    key={size}
-                    m={4}
-                >{`TOPICS`}</Button>
-            ))}
-
-            <Drawer onClose={onClose} isOpen={isOpen} size={size}>
-                <DrawerOverlay>
-                    <DrawerContent>
-                        <DrawerHeader>IP ADDRESS</DrawerHeader>
-                        <DrawerBody>
-                            <Link href="#ip">1. What is IP address</Link><br />
-                            <Link href="#steps">2. Steps to check IP</Link><br />
-                            <Link href="#classes">3. Classes of IP</Link><br />
-                            <Link href="#types">4. Types of IP </Link><br />
-                            <Link href="#diffrence4and6">5. Diffrence between ipv4 and ipv6</Link><br />
-                            <Link href="#subneting">6. Subneting</Link><p /> 
-                            <Link href="#nid and bid ">6. What is NID and BID</Link><p /> 
-                            <Link href="#mask">6. Subnet Masking</Link><p /> 
-                            <Link href="#practical">6. Practical</Link><p />
-                            <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
-                        </DrawerBody>
-                    </DrawerContent>
-                </DrawerOverlay>
-            </Drawer>
         </>
     )
 }

@@ -25,16 +25,30 @@ import { Footer } from "./footer";
 
 import { Link as RouterLink, Redirect, Route } from "react-router-dom"
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
+import { Topics } from "./topics"
 
 
 export function Page5() {
     const color = useColorModeValue('purple.400', 'plum');
     const textcolor = useColorModeValue('white', 'black');
+    const topicList = [
+            {href: "#rip", content: "1. What is RIP?"},
+            {href: "#ospf", content: "2. What is OSPF? "},
+            {href: "#port", content: "3. Ports "},
+            {href: "#modes", content: "4.  Modes of Router"},
+            {href: "#types", content: "5.  Types of Routing "},
+            {href: "#config", content: "6. Configuration "},
+            {href: "#static and bid", content: "7. Static Routing "},
+            {href: "#default", content: "8. Default Routing "},
+            {href: "#dynamic", content: "9.  Dynamic Routing "},
+            <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
+           
+        ]; 
     return (
 
         <Box textAlign="center" fontSize="1xl" >
             <Box textAlign="left" position="fixed" >
-                <SizeExample />
+            <Topics title="RIP and OSFP" topics={topicList} />
             </Box>
             <Box paddingtop="10"  > <Header /></Box>
 
@@ -141,8 +155,7 @@ function SizeExample() {
                     <DrawerContent>
                         <DrawerHeader>HONEYPOT</DrawerHeader>
                         <DrawerBody>
-                            <Link href="#rip">1. What is RIP?</Link><br />
-                            <Link href="#ospf">2. What is OSPF?</Link><br />
+                           
                             <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
                         </DrawerBody>
                     </DrawerContent>

@@ -20,12 +20,11 @@ import {
     Heading,
    
 } from "@chakra-ui/react";
-
+import {Topics} from "./topics"
 import connections from "../resources/connections.png";
 import ciscoui from "../resources/CISCOUI.png";
 import ND from "../resources/ND.png";
 import CD from "../resources/CD.png";
-
 import { Link as RouterLink, Redirect, Route } from "react-router-dom"
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
 import { Header } from "./header";
@@ -35,11 +34,23 @@ import { Footer } from "./footer";
 export function Page2() {
     const color = useColorModeValue('purple.400', 'plum');
     const textcolor = useColorModeValue('white', 'black');
+    const topicList = [
+        {href: "#intro", content: "1. Intoduction to cpt"},
+        {href: "#download", content: "2. Download link"},
+        {href: "#connections", content: "3. connections"},
+        {href: "#nd", content: "4. Networking devices"},
+        {href: "#cd", content: "5. Connecting devices"},
+        <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
+        
+
+    ];
     return (
 
         <Box textAlign="center" fontSize="1xl">
             <Box textAlign="left" position="fixed">
-                <SizeExample />
+                {/* <SizeExample /> 
+                            */}
+                <Topics title="CPT" topics={topicList} />
             </Box>
             <Box paddingtop="10" > <Header/></Box>
 
@@ -157,46 +168,6 @@ export function RedirectButton() {
 
                 DOWNLOAD
               </Button>
-        </>
-    )
-}
-function SizeExample() {
-    const [size, setSize] = React.useState("md")
-    const { isOpen, onOpen, onClose } = useDisclosure()
-
-    const handleClick = (newSize: React.SetStateAction<string>) => {
-        setSize(newSize)
-        onOpen()
-    }
-
-    const sizes = ["xs"]
-
-    return (
-        <>
-            {sizes.map((size) => (
-                <Button
-                    onClick={() => handleClick(size)}
-                    key={size}
-                    m={4}
-                >{`TOPICS`}</Button>
-            ))}
-
-            <Drawer onClose={onClose} isOpen={isOpen} size={size}>
-                <DrawerOverlay>
-                    <DrawerContent>
-                        <DrawerHeader>CPT</DrawerHeader>
-                        <DrawerBody>
-                            <Link href="#intro">1. Intoduction to cpt</Link><br />
-                            <Link href="#download">2. Download link</Link><br />
-                            <Link href="#connections">3. connections</Link><br />
-                            <Link href="#nd">4. Networking devices</Link><br />
-                            <Link href="#cd">5. Connecting devices</Link><br />
-                           
-                            <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
-                        </DrawerBody>
-                    </DrawerContent>
-                </DrawerOverlay>
-            </Drawer>
         </>
     )
 }

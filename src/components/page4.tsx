@@ -47,13 +47,27 @@ import Static1 from "../resources/STATIC1.png";
 import Static2 from "../resources/STATIC2.png";
 import { Link as RouterLink, Redirect } from "react-router-dom"
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
+import { Topics } from "./topics"
 export function Page4() {
     const color = useColorModeValue('purple.400', 'plum');
     const textcolor = useColorModeValue('white', 'black');
+    const topicList = [
+        {href: "#router", content: "1. What is a Router?"},
+        {href: "#concepts", content: "2. Concepts "},
+        {href: "#port", content: "3. Ports "},
+        {href: "#modes", content: "4.  Modes of Router"},
+        {href: "#types", content: "5.  Types of Routing "},
+        {href: "#config", content: "6. Configuration "},
+        {href: "#static and bid", content: "7. Static Routing "},
+        {href: "#default", content: "8. Default Routing "},
+        {href: "#dynamic", content: "9.  Dynamic Routing "},
+        <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
+        
+    ]; 
     return (
         <Box textAlign="center" fontSize="xl">
             <Box textAlign="left" position="fixed">
-                <SizeExample />
+            <Topics title="ROUTERS" topics={topicList} />
             </Box>
             <Box paddingtop="10" > <Header/></Box>
             <Grid minH="50vh" p={3}>
@@ -275,50 +289,6 @@ We can enter in this mode when we interrupt boot process of the router. Generall
 }
 
 
-function SizeExample() {
-    const [size, setSize] = React.useState("md")
-    const { isOpen, onOpen, onClose } = useDisclosure()
-
-    const handleClick = (newSize: React.SetStateAction<string>) => {
-        setSize(newSize)
-        onOpen()
-    }
-
-    const sizes = ["xs"]
-
-    return (
-        <>
-            {sizes.map((size) => (
-                <Button
-                    onClick={() => handleClick(size)}
-                    key={size}
-                    m={4}
-                >{`TOPICS`}</Button>
-            ))}
-
-            <Drawer onClose={onClose} isOpen={isOpen} size={size}>
-                <DrawerOverlay>
-                    <DrawerContent>
-                        <DrawerHeader>HONEYPOT</DrawerHeader>
-                        <DrawerBody>
-                            <Link href="#router">1. What is a Router?</Link><br />
-                            <Link href="#concepts">2. Concepts</Link><br />
-                            <Link href="#port">3. Ports</Link><br />
-                            <Link href="#modes">4. Modes of Router</Link><br />
-                            <Link href="#types">5. Types of Routing</Link><br/>
-                            <Link href="#config">6. Configuration</Link><br />
-                            <Link href="#static">7. Static Routing</Link><p />
-                            <Link href="#default">8. Default Routing</Link><p />
-                            <Link href="#dynamic">9. Dynamic Routing</Link><p />
-                            
-                            <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
-                        </DrawerBody>
-                    </DrawerContent>
-                </DrawerOverlay>
-            </Drawer>
-        </>
-    )
-}
 
 function SlideEx() {
     const { isOpen, onToggle } = useDisclosure()

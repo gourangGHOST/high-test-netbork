@@ -21,23 +21,26 @@ import {
     ListItem,
 } from "@chakra-ui/react";
 
-import pngdark from "../resources/abcd1.png";
-import pnglite from "../resources/abcd.png";
 
 import { Link as RouterLink, Redirect, Route } from "react-router-dom"
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
 import { Header } from "./header";
 import { Footer } from "./footer";
+import { Topics } from "./topics";
 
 
 export function Page9() {
     const color = useColorModeValue('purple.400', 'plum');
     const textcolor = useColorModeValue('white', 'black');
+    const topicList = [
+        {href: "#ns", content: "1. What is Netwrok scanning?"},
+        <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
+    ];
     return (
 
         <Box textAlign="center" fontSize="2xl">
             <Box textAlign="left" position="fixed">
-                <SizeExample />
+            <Topics title="Network Scanning" topics={topicList}/>
             </Box>
             <Box paddingtop="10" > <Header/></Box>
 
@@ -51,11 +54,11 @@ export function Page9() {
                             </Text>
 
                     </Box>
-                    <Text fontSize="3xl">
+                    <Text fontSize="3xl" id="ns">
                     
                     Network scanning
                         </Text>
-                    <Text width="70%" textAlign="left" id="networkscanning">
+                    <Text width="70%" textAlign="left" >
                     Network scanning refers to the use of a computer network to gather information regarding computing systems. Network scanning is mainly used for security assessment, system maintenance, and also for performing attacks by attackers.<p/>
 Tools that we can used for network scanning are : →<OrderedList>
 <ListItem>Fing App to identify connected devices, troubleshoot network and device issues,scan network , detect network intruders and run Wi-Fi and internet speed tests anywhere.</ListItem>
@@ -88,41 +91,5 @@ The purpose of network scanning is to manage, maintain, and secure the system us
 
 
         </Box>
-    )
-}
-
-function SizeExample() {
-    const [size, setSize] = React.useState("md")
-    const { isOpen, onOpen, onClose } = useDisclosure()
-
-    const handleClick = (newSize: React.SetStateAction<string>) => {
-        setSize(newSize)
-        onOpen()
-    }
-
-    const sizes = ["xs"]
-
-    return (
-        <>
-            {sizes.map((size) => (
-                <Button
-                    onClick={() => handleClick(size)}
-                    key={size}
-                    m={4}
-                >{`TOPICS`}</Button>
-            ))}
-
-            <Drawer onClose={onClose} isOpen={isOpen} size={size}>
-                <DrawerOverlay>
-                    <DrawerContent>
-                        <DrawerHeader>{``}</DrawerHeader>
-                        <DrawerBody>
-                            <Link href="#networkscanning">NETWROK SCANNING</Link>
-                            <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
-                        </DrawerBody>
-                    </DrawerContent>
-                </DrawerOverlay>
-            </Drawer>
-        </>
     )
 }

@@ -16,8 +16,6 @@ import {
     DrawerHeader,
     DrawerOverlay,
     useDisclosure,
-    OrderedList,
-    ListItem,
     useColorModeValue,
     Heading,
     Spacer,
@@ -27,10 +25,24 @@ import pics from "../resources/switching.png"
 import vlan from "../resources/vlan.png"
 import { Header } from "./header";
 import { Footer } from "./footer";
+import { Topics } from "./topics";
 export function Page6() {
 
     const color = useColorModeValue('purple.400', 'plum');
     const textcolor = useColorModeValue('white', 'black');
+    const topicList = [
+        {href: "#switching", content: "1. What is swtch?"},
+        {href: "#ports", content: "2. Ports "},
+        {href: "#configs", content: "3. Configuration of switch "},
+        {href: "#vlan", content: "4. VLAN"},
+        {href: "##configvlan", content: "5.  Configurationof vlan< "},
+        {href: "#config", content: "6. Configuration "},
+        {href: "#static and bid", content: "7. Static Routing "},
+        {href: "#default", content: "8. Default Routing "},
+        {href: "#dynamic", content: "9.  Dynamic Routing "},
+        <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
+                           
+    ]; 
     return (
 
 
@@ -41,7 +53,7 @@ export function Page6() {
 
                 <ColorModeSwitcher justifySelf="flex-end" />
                 <Box textAlign="left" position="fixed">
-                    <SizeExample />
+                <Topics title="SWITCHING" topics={topicList} />
                 </Box>
                 <Box paddingtop="10" > <Header/></Box>
                 <VStack>
@@ -50,8 +62,7 @@ export function Page6() {
                             Networking & it’s Security
                             </Text>
                     </Box >
-                    <Heading id=
-                    "switching"> 
+                    <Heading id="switching"> 
                         SWITCHING
                     </Heading>
                     <Text width="70%" >
@@ -158,44 +169,6 @@ If u need to check whether u have added interfaces successfully or not, go with 
 }
 
 
-function SizeExample() {
-    const [size, setSize] = React.useState("md")
-    const { isOpen, onOpen, onClose } = useDisclosure()
 
-    const handleClick = (newSize: React.SetStateAction<string>) => {
-        setSize(newSize)
-        onOpen()
-    }
-
-    const sizes = ["xs"]
-
-    return (
-        <>
-            {sizes.map((size) => (
-                <Button
-                    onClick={() => handleClick(size)}
-                    key={size}
-                    m={4}
-                >{`TOPICS`}</Button>
-            ))}
-
-            <Drawer onClose={onClose} isOpen={isOpen} size={size}>
-                <DrawerOverlay>
-                    <DrawerContent>
-                        <DrawerHeader>SWITCHING</DrawerHeader>
-                        <DrawerBody>
-                            <Link href="#switching">1. What is swtch?</Link><br />
-                            <Link href="#ports">2. Ports </Link><br />
-                            <Link href="#configs">3. Configuration of switch</Link><br />
-                            <Link href="#vlan">3. VLAN</Link><br />
-                            <Link href="#configvlan">4. Configurationof vlan</Link><br />
-                            <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
-                        </DrawerBody>
-                    </DrawerContent>
-                </DrawerOverlay>
-            </Drawer>
-        </>
-    )
-}
 
 

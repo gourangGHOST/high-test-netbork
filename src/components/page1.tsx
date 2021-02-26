@@ -2,37 +2,36 @@ import * as React from "react"
 import {
     Box,
     Text,
-    Link,
     VStack,
-  
     Grid,
     Spacer,
     Button,
-    Drawer,
-    DrawerBody,
-    DrawerContent,
-    DrawerHeader,
-    DrawerOverlay,
-    useDisclosure,
     useColorModeValue,
     Heading,
 } from "@chakra-ui/react"
-import { Link as RouterLink, Redirect } from "react-router-dom"
-
+import { Link as RouterLink} from "react-router-dom"
+import {Topics} from "./topics"
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
 import { Header } from "./header";
-import { Footer } from "./footer"
+import { Footer } from "./footer";
+
 export function Page1() {
 
     const color = useColorModeValue('purple.400', 'plum');
     const textcolor = useColorModeValue('white', 'black');
+     const topicList = [
+        {href: "#what-is", content: "1. 1. What is network security?"},
+        {href: "##importance", content: "2. 2. Why is network security important?"},
+        <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
+                            
+    ];
     
 
         return (
 
             <Box textAlign="center" fontSize="xl">
                 <Box textAlign="left" >
-                    <SizeExample />
+                <Topics title="Topics" topics={topicList} />
                 </Box>
                 <Box paddingtop="10" > <Header/></Box>
                 
@@ -91,42 +90,3 @@ Why is network security important?
     }
 
 
-
-
-    function SizeExample() {
-        const [size, setSize] = React.useState("md")
-        const { isOpen, onOpen, onClose } = useDisclosure()
-    
-        const handleClick = (newSize: React.SetStateAction<string>) => {
-            setSize(newSize)
-            onOpen()
-        }
-    
-        const sizes = ["xs"]
-    
-        return (
-            <>
-                {sizes.map((size) => (
-                    <Button
-                        onClick={() => handleClick(size)}
-                        key={size}
-                        m={4}
-                    >{`TOPICS`}</Button>
-                ))}
-    
-                <Drawer onClose={onClose} isOpen={isOpen} size={size}>
-                    <DrawerOverlay>
-                        <DrawerContent>
-                            <DrawerHeader>TOPICS</DrawerHeader>
-                            <DrawerBody>
-                                <Link href="#what-is">1. What is network security?</Link><br />
-                                <Link href="#importance">2. Why is network security important?</Link><br />
-                                <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
-                            </DrawerBody>
-                        </DrawerContent>
-                    </DrawerOverlay>
-                </Drawer>
-            </>
-        )
-    }
-    

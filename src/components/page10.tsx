@@ -25,12 +25,23 @@ import { Footer } from "./footer"
 import { Link as RouterLink, } from "react-router-dom"
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
 import { Header } from "./header";
+import { Topics } from "./topics";
 
 
 export function Page10() {
     const color = useColorModeValue('purple.400', 'plum');
     const textcolor = useColorModeValue('white', 'black');
     const nopage = useLocation()
+    const topicList = [
+        {href: "#honeypot-desc", content: "1. What is Honeypot?"},
+        {href: "#honeypots-working", content: "2. Working of honeypot"},
+        {href: "#example", content: "3. Example"},
+        {href: "#splunk", content: "4. What is splunk?"},
+        {href: "#IDS-and-IPS", content: "5. IDS and IPS"},
+        {href: "#The-Differences-Between-IDS-and-IPS", content: "6. The Differences Between IDS and IPS"},
+        <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
+    ];
+    
     
     console.log(nopage.pathname)
     return (
@@ -38,7 +49,7 @@ export function Page10() {
         <><Box textAlign="center" fontSize="2xl">
 
             <Box textAlign="left" position="fixed">
-                <SizeExample/>
+            <Topics title="HONEYPOT" topics={topicList}/>
                
             
             
@@ -103,43 +114,3 @@ IDS requires a human or another system to look at the results and determine what
 
 
 
-function SizeExample() {
-    const [size, setSize] = React.useState("md")
-    const { isOpen, onOpen, onClose } = useDisclosure()
-
-    const handleClick = (newSize: React.SetStateAction<string>) => {
-        setSize(newSize)
-        onOpen()
-    }
-
-    const sizes = ["xs"]
-
-    return (
-        <>
-            {sizes.map((size) => (
-                <Button
-                    onClick={() => handleClick(size)}
-                    key={size}
-                    m={4}
-                >{`TOPICS`}</Button>
-            ))}
-
-            <Drawer onClose={onClose} isOpen={isOpen} size={size}>
-                <DrawerOverlay>
-                    <DrawerContent>
-                        <DrawerHeader>HONEYPOT</DrawerHeader>
-                        <DrawerBody>
-                            <Link href="#honeypot-desc">1. What is honeypot?</Link><br />
-                            <Link href="#honeypots-working">2. Working of honeypot</Link><br />
-                            <Link href="#example">3. Example</Link><br />
-                            <Link href="#splunk">4. What is splunk?</Link><br />
-                            <Link href="#IDS-and-IPS">5. IDS and IPS</Link><br />
-                            <Link href="#The-Differences-Between-IDS-and-IPS">6. The Differences Between IDS and IPS</Link><p />
-                            <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
-                        </DrawerBody>
-                    </DrawerContent>
-                </DrawerOverlay>
-            </Drawer>
-        </>
-    )
-}

@@ -8,12 +8,6 @@ import {
     Grid,
     Spacer,
     useColorModeValue,
-    useDisclosure,
-    Drawer,
-    DrawerBody,
-    DrawerContent,
-    DrawerHeader,
-    DrawerOverlay,
     Code,
 } from "@chakra-ui/react";
 
@@ -21,19 +15,24 @@ import {
 import firewall from "../resources/firewall.png";
 import { Header } from "./header";
 import { Footer } from "./footer";
-
+import { Topics } from "./topics";
 import { Link as RouterLink, Redirect, Route } from "react-router-dom"
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
 
 
 export function Page8() {
     const color = useColorModeValue('purple.400', 'plum');
-    const textcolor = useColorModeValue('white', 'black');
+    const textcolor = useColorModeValue('white', 'black'); 
+     const topicList = [
+        {href: "#asa", content: "1. What is ASA firewall?"},
+        {href: "#config", content: "2.  CONFIGURATION OF FIREWALL  "},
+        <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
+    ]; 
     return (
 
         <Box textAlign="center" fontSize="2xl">
             <Box textAlign="left" position="fixed">
-                <SizeExample />
+            <Topics title=" ASA Firewall" topics={topicList}/>
             </Box>
             <Box paddingtop="10" > <Header /></Box>
 
@@ -48,7 +47,7 @@ export function Page8() {
                             </Text>
 
                     </Box>
-                    <Text fontSize="3xl">
+                    <Text fontSize="3xl" id="asa">
 
                         ASA Firewall<p />
                     </Text>
@@ -64,7 +63,7 @@ VPN device<p />
 SSL device<p />
 content inspection<p />
                     <Image src={firewall}></Image>
-                    <Text width="70%" textAlign="left" size="2xl">
+                    <Text width="70%" textAlign="left" size="2xl" id="config">
                         CONFIGURATION OF FIREWALL :<p />
 
 STEP 1: REMOVE DEFAULT IP ADDRESS AND DHCP SCOPE RANGE<p />
@@ -169,37 +168,3 @@ STEP 9: Go to PC &gt; DHCP<p />
 
 
 
-function SizeExample() {
-    const [size, setSize] = React.useState("md")
-    const { isOpen, onOpen, onClose } = useDisclosure()
-
-    const handleClick = (newSize: React.SetStateAction<string>) => {
-        setSize(newSize)
-        onOpen()
-    }
-
-    const sizes = ["xs"]
-
-    return (
-        <>
-            {sizes.map((size) => (
-                <Button
-                    onClick={() => handleClick(size)}
-                    key={size}
-                    m={4}
-                >{`TOPICS`}</Button>
-            ))}
-
-            <Drawer onClose={onClose} isOpen={isOpen} size={size}>
-                <DrawerOverlay>
-                    <DrawerContent>
-                        <DrawerHeader>{``}</DrawerHeader>
-                        <DrawerBody>
-                        <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
-                        </DrawerBody>
-                    </DrawerContent>
-                </DrawerOverlay>
-            </Drawer>
-        </>
-    )
-}
