@@ -9,7 +9,7 @@ import {
     Button,
     useColorModeValue,
     ButtonGroup,
-    Spacer,
+    VStack,
 } from "@chakra-ui/react"
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
 import hacking from "../resources/hacking.jpg"
@@ -25,10 +25,10 @@ export function HomeComponent() {
 
 
         <Box>
-            <Grid minH="200vh" p={3}>
+            <Grid minH="150vh" p={3}>
 
                 <ColorModeSwitcher justifySelf="flex-end" />
-                <Box paddingtop="100%">
+                <Box paddingtop="50%">
                             <ButtonGroup colorScheme="teal" variant="ghost" fontSize="2xl" size="sm" >
                             <Button as={RouterLink} to="/page1">Getting started -{">"}</Button>
                             <Button as={RouterLink} to="/page2">Cisco packet tracer</Button>
@@ -44,9 +44,8 @@ export function HomeComponent() {
 
                         </ButtonGroup>
                     </Box>
-
                 
-
+<VStack>
                
                         <Image justifySelf="center" src={first}></Image>
                         <Text textAlign="center" width="60%">
@@ -54,7 +53,7 @@ export function HomeComponent() {
                         <Image justifySelf="center" src={hacking}></Image>
                         <Box justifySelf="center"> <Footer /></Box>
 
-
+                        </VStack>
             </Grid>
 
 </Box>
