@@ -2,19 +2,12 @@ import * as React from "react"
 import {
     Box,
     Text,
-    Link,
     Image,
     VStack,
     Button,
     Grid,
     Spacer,
     useColorModeValue,
-    useDisclosure,
-    Drawer,
-    DrawerBody,
-    DrawerContent,
-    DrawerHeader,
-    DrawerOverlay,
     Heading,
     Code,
 } from "@chakra-ui/react";
@@ -126,41 +119,5 @@ Open shortest path first (OSPF) is developed by Internet Engineering Task Force 
 
 
         </Box>
-    )
-}
-
-function SizeExample() {
-    const [size, setSize] = React.useState("md")
-    const { isOpen, onOpen, onClose } = useDisclosure()
-
-    const handleClick = (newSize: React.SetStateAction<string>) => {
-        setSize(newSize)
-        onOpen()
-    }
-
-    const sizes = ["xs"]
-
-    return (
-        <>
-            {sizes.map((size) => (
-                <Button
-                    onClick={() => handleClick(size)}
-                    key={size}
-                    m={4}
-                >{`TOPICS`}</Button>
-            ))}
-
-            <Drawer onClose={onClose} isOpen={isOpen} size={size}>
-                <DrawerOverlay>
-                    <DrawerContent>
-                        <DrawerHeader>HONEYPOT</DrawerHeader>
-                        <DrawerBody>
-                           
-                            <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
-                        </DrawerBody>
-                    </DrawerContent>
-                </DrawerOverlay>
-            </Drawer>
-        </>
     )
 }

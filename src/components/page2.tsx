@@ -3,7 +3,6 @@ import { useState } from "react"
 import {
     Box,
     Text,
-    Link,
     Image,
     VStack,
     Button,
@@ -12,11 +11,6 @@ import {
     useColorModeValue,
     Slide,
     useDisclosure,
-    Drawer,
-    DrawerBody,
-    DrawerContent,
-    DrawerHeader,
-    DrawerOverlay,
     Heading,
    
 } from "@chakra-ui/react";

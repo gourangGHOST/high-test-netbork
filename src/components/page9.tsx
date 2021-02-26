@@ -1,22 +1,12 @@
 import * as React from "react"
-import { useState } from "react"
 import {
     Box,
     Text,
-    Link,
-    Image,
     VStack,
     Button,
     Grid,
     Spacer,
     useColorModeValue,
-    Slide,
-    useDisclosure,
-    Drawer,
-    DrawerBody,
-    DrawerContent,
-    DrawerHeader,
-    DrawerOverlay,
     OrderedList,
     ListItem,
 } from "@chakra-ui/react";

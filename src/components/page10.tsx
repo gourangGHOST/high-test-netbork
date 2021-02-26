@@ -3,20 +3,11 @@ import { useLocation } from "react-router-dom"
 import {
     Box,
     Text,
-    Link,
-    Image,
     VStack,
     Button,
     Grid,
     Spacer,
     useColorModeValue,
-    Slide,
-    useDisclosure,
-    Drawer,
-    DrawerBody,
-    DrawerContent,
-    DrawerHeader,
-    DrawerOverlay,
     Heading,
 } from "@chakra-ui/react";
 
