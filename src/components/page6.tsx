@@ -19,6 +19,7 @@ import vlan from "../resources/vlan.png"
 import { Header } from "./header";
 import { Footer } from "./footer";
 import { Topics } from "./topics";
+import { Topbar } from "./something"
 export function Page6() {
 
     const color = useColorModeValue('purple.400', 'plum');
@@ -33,7 +34,7 @@ export function Page6() {
         {href: "#static and bid", content: "7. Static Routing "},
         {href: "#default", content: "8. Default Routing "},
         {href: "#dynamic", content: "9.  Dynamic Routing "},
-        <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
+        <Button as={RouterLink} to="/"   bottom="3" right="3">Home Page</Button>
                            
     ]; 
     return (
@@ -45,12 +46,12 @@ export function Page6() {
             <Grid minH="100vh" p={3}>
 
                 <ColorModeSwitcher justifySelf="flex-end" />
-                <Box textAlign="left" position="fixed">
+                <Box textAlign="left"  >
+                    <Topbar/>
                 <Topics title="SWITCHING" topics={topicList} />
                 </Box>
-                <Box paddingtop="10" > <Header/></Box>
                 <VStack>
-                    <Box bg={color} width="-moz-max-content" p={10} textColor={textcolor} opacity="100%" borderRadius="50%">
+                    <Box bg={color} width="-moz-max-content" p={10} textColor={textcolor} opacity="100%" borderRadius="5%">
                         <Text fontSize="5xl" >
                             Networking & it’s Security
                             </Text>
@@ -134,27 +135,13 @@ If u need to check whether u have added interfaces successfully or not, go with 
 <Code>command &gt; show vlan. <p /></Code>
 </Text>
                         <Image src={vlan}></Image>
-                    
-
-
-                        <Box position="fixed" bottom="3" left="0">
-
-<Button as={RouterLink} to="/page5">
-    Previous Page
-</Button>
-<Spacer />
-<Button as={RouterLink} to="/page7" position="fixed" bottom="3" right="0">
-    Next Page
-</Button>
-<Spacer />
-</Box>
-                    
-
+                
                 </VStack>
 
             </Grid>
             <Grid>
-            <Box justifySelf="center"> <Footer />
+            <Box justifySelf="center"> <Footer nextPage="/page7"
+                        previousPage="/page5"/>
             </Box></Grid>
 
         </Box>

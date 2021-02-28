@@ -23,6 +23,7 @@ import { Link as RouterLink, Redirect, Route } from "react-router-dom"
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
 import { Header } from "./header";
 import { Footer } from "./footer";
+import { Topbar } from "./something";
 
 
 export function Page2() {
@@ -34,25 +35,23 @@ export function Page2() {
         {href: "#connections", content: "3. connections"},
         {href: "#nd", content: "4. Networking devices"},
         {href: "#cd", content: "5. Connecting devices"},
-        <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
+        <Button as={RouterLink} to="/"   bottom="3" right="3">Home Page</Button>
         
 
     ];
     return (
 
         <Box textAlign="center" fontSize="1xl">
-            <Box textAlign="left" position="fixed">
-                {/* <SizeExample /> 
-                            */}
+            <Box textAlign="left"  >
+            <Topbar/>
                 <Topics title="CPT" topics={topicList} />
             </Box>
-            <Box paddingtop="10" > <Header/></Box>
 
             <Grid minH="50vh" p={3}>
                 <ColorModeSwitcher justifySelf="flex-end" />
                 <VStack>
 
-                <Box bg={color} width="-moz-max-content" p={10} textColor={textcolor} opacity="100%" borderRadius="50%">
+                <Box bg={color} width="-moz-max-content" p={10} textColor={textcolor} opacity="100%" borderRadius="5%">
       <Text fontSize="5xl" >
                             Networking & it’s Security
                             </Text>
@@ -96,22 +95,11 @@ export function Page2() {
             </Grid>
             <Spacer />
 
-            <Box position="fixed" bottom="3" left="0">
-
-                <Button as={RouterLink} to="/page1">
-                    Previous Page
-                </Button>
-                <Spacer />
-                <Button as={RouterLink} to="/page3" position="fixed" bottom="3" right="0">
-                    Next Page
-                </Button>
-                <Spacer />
-                </Box>
-           
 
 
                 <Grid>
-                <Box justifySelf="center"> <Footer />
+                <Box justifySelf="center"> <Footer nextPage="/page3"
+                        previousPage="/page1" />
                 </Box></Grid>
 
         </Box>

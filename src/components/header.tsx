@@ -154,8 +154,8 @@ export function Header() {
 
 
     return (
-        <Box >
-        <HStack padding={3} paddingTop="20" >
+        <Box paddingTop={20} >
+        <HStack padding={3}  >
             <Spacer/>
             <ButtonGroup size="sm" colorScheme="facebook">
                 {page1 ? null : <Button as={RouterLink} to="/page1">Getting started -{">"}</Button>}

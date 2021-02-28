@@ -14,7 +14,7 @@ import {
 import NAT from "../resources/NAT.png";
 import NAT1 from "../resources/NAT1.png";
 import acl1 from "../resources/acl1.png";
-import { Header } from "./header";
+import { Topbar } from "./something";
 import { Footer } from "./footer";
 import { Topics } from "./topics";
 import { Link as RouterLink } from "react-router-dom"
@@ -28,21 +28,21 @@ export function Page7() {
         {href: "#acl", content: "1. What is ACL?"},
         {href: "#aclc", content: "2. ACL CREATION "},
         {href: "#working", content: "3. Working"},
-       <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
+       <Button as={RouterLink} to="/"   bottom="3" right="3">Home Page</Button>
     ]; 
     return (
 
         <Box textAlign="center" fontSize="1xl">
-            <Box textAlign="left" position="fixed">
+            <Box textAlign="left"  >
+                <Topbar/>
             <Topics title="ACL" topics={topicList} />
             </Box>
-            <Box paddingtop="10" > <Header/></Box>
 
             <Grid minH="50vh" p={3}>
                 <ColorModeSwitcher justifySelf="flex-end" />
                 <VStack>
 
-                    <Box bg={color} width="-moz-max-content" p={10} textColor={textcolor} opacity="100%" borderRadius="50%">
+                    <Box bg={color} width="-moz-max-content" p={10} textColor={textcolor} opacity="100%" borderRadius="5%">
                         <Text fontSize="5xl" >
                             Networking & it’s Security
                             </Text>
@@ -118,20 +118,9 @@ NAT Implementation:-<p />
                 </VStack>
             </Grid>
             <Spacer />
-
-            <Box position="fixed" bottom="3" left="0">
-
-<Button as={RouterLink} to="/page6">
-    Previous Page
-</Button>
-<Spacer />
-<Button as={RouterLink} to="/page8" position="fixed" bottom="3" right="0">
-    Next Page
-</Button>
-<Spacer />
-</Box>
             <Grid>
-            <Box justifySelf="center"> <Footer />
+            <Box justifySelf="center"> <Footer nextPage="/page8"
+                        previousPage="/page6"/>
             </Box></Grid>
 
 

@@ -15,7 +15,6 @@ import { Page7 } from "./components/page7"
 import { Page8 } from "./components/page8"
 import { Page9 } from "./components/page9"
 import { Page10 } from "./components/page10"
-import { DingDong } from "./components/dingdong"
 
 export class App extends React.Component {
   render() {
@@ -23,7 +22,6 @@ export class App extends React.Component {
       <ChakraProvider theme={theme}>
         <BrowserRouter>
           <Switch>
-            <Route path="/ding" component={DingDong} />
             <Route path="/page10" component={Page10} />
             <Route path="/page9" component={Page9} />
             <Route path="/page8" component={Page8} />

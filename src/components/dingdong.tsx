@@ -1,6 +1,6 @@
 import * as React from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
-import { Image } from "@chakra-ui/react"
+import dingdong from "../resources/dingdong.jpg"
 import imageee from "../resources/abcd.png"
 
 export function DingDong() {
@@ -44,7 +44,7 @@ export function DingDong() {
                     rotateX: rotateX,
                     rotateY: rotateY,
                 }}
-                src={imageee}
+                src={dingdong}
             />
         </motion.div>
     );

@@ -13,7 +13,7 @@ import {
 
 
 import firewall from "../resources/firewall.png";
-import { Header } from "./header";
+import { Topbar } from "./something";
 import { Footer } from "./footer";
 import { Topics } from "./topics";
 import { Link as RouterLink, Redirect, Route } from "react-router-dom"
@@ -26,21 +26,21 @@ export function Page8() {
      const topicList = [
         {href: "#asa", content: "1. What is ASA firewall?"},
         {href: "#config", content: "2.  CONFIGURATION OF FIREWALL  "},
-        <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
+        <Button as={RouterLink} to="/"   bottom="3" right="3">Home Page</Button>
     ]; 
     return (
 
         <Box textAlign="center" fontSize="2xl">
-            <Box textAlign="left" position="fixed">
+            <Box textAlign="left"  >
+                <Topbar/>
             <Topics title=" ASA Firewall" topics={topicList}/>
             </Box>
-            <Box paddingtop="10" > <Header /></Box>
 
             <Grid minH="50vh" p={3}>
                 <ColorModeSwitcher justifySelf="flex-end" />
                 <VStack>
 
-                <Box bg={color} width="-moz-max-content" p={10} textColor={textcolor} opacity="100%" borderRadius="50%">
+                <Box bg={color} width="-moz-max-content" p={10} textColor={textcolor} opacity="100%" borderRadius="5%">
 
                         <Text fontSize="5xl" >
                             Networking & it’s Security
@@ -142,21 +142,9 @@ STEP 9: Go to PC &gt; DHCP<p />
 
                 </VStack>
             </Grid>
-            <Spacer />
-            <Box position="fixed" bottom="3" left="3">
-
-                <Button as={RouterLink} to="/page7">
-                    Previous Page
-</Button>
-                <Spacer />
-                <Button as={RouterLink} to="/page9" position="fixed" bottom="3" right="3">
-                    Next Page
-</Button>
-                <Spacer />
-            </Box>
-       
             <Grid>
-                <Box justifySelf="center"> <Footer />
+                <Box justifySelf="center"> <Footer nextPage="/page9"
+                        previousPage="/page7"/>
                 </Box></Grid>
 
 

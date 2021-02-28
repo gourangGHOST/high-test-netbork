@@ -26,12 +26,13 @@ import {
     useDisclosure,
 } from "@chakra-ui/react";
 
-import pngdark from "../resources/abcd1.png";
-import pnglite from "../resources/abcd.png";
+import pngdark from "../resources/abcd1.png"
+import pnglite from "../resources/abcd.png"
 import image from "../resources/Screenshot 2021-02-13 144905.png"
-import { Header } from "./header";
-import { Footer } from "./footer";
-import { Topics } from "./topics";
+import { Header } from "./header"
+import { Footer } from "./footer"
+import { Topics } from "./topics"
+import { Topbar } from "./something"
 
 import { Link as RouterLink } from "react-router-dom"
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
@@ -50,17 +51,16 @@ export function Page3() {
         {href: "#nid and bid", content: "7. NID and BID "},
         {href: "#mask", content: "8. Mask "},
         {href: "#practical", content: "9. Practical "},
-        <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
+        <Button as={RouterLink} to="/"   bottom="3" right="3">Home Page</Button>
         
     ];
     return (
 
         <><Box textAlign="center" fontSize="xl">
-            <Box textAlign="left" position="fixed">
+            <Box textAlign="left"  >
+            <Topbar/>
             <Topics title="IP ADDRESS" topics={topicList} />
-
             </Box>
-            <Box paddingtop="10"> <Header /></Box>
 
             <Grid minH="50vh" p={3}>
                 <ColorModeSwitcher justifySelf="flex-end" />
@@ -68,7 +68,7 @@ export function Page3() {
                     <Box>
 
                     </Box>
-                    <Box bg={color} width="-moz-max-content" p={10} textColor={textcolor} opacity="100%" borderRadius="50%">
+                    <Box bg={color} width="-moz-max-content" p={10} textColor={textcolor} opacity="100%" borderRadius="5%">
      <Text fontSize="5xl">
                             Networking & it’s Security
                         </Text>
@@ -312,20 +312,11 @@ The NID for a network is used when routing packets outside the network(among dif
                 </UnorderedList>
 
             </VStack>
-        </Grid><Spacer /><Box position="fixed" bottom="3" left="0">
-
-                <Button as={RouterLink} to="/page2">
-                    Previous Page
-                </Button>
-                <Spacer />
-                <Button as={RouterLink} to="/page4" position="fixed" bottom="3" right="0">
-                    Next Page
-                </Button>
-                <Spacer />
-            </Box>
+        </Grid>
 
             <Grid>
-                <Box justifySelf="center"> <Footer />
+                <Box justifySelf="center"> <Footer nextPage="/page4"
+                        previousPage="/page2" />
                 </Box></Grid>
 
 

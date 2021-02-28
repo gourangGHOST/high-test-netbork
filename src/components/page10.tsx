@@ -17,6 +17,7 @@ import { Link as RouterLink, } from "react-router-dom"
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
 import { Header } from "./header";
 import { Topics } from "./topics";
+import { Topbar } from "./something";
 
 
 export function Page10() {
@@ -30,7 +31,7 @@ export function Page10() {
         {href: "#splunk", content: "4. What is splunk?"},
         {href: "#IDS-and-IPS", content: "5. IDS and IPS"},
         {href: "#The-Differences-Between-IDS-and-IPS", content: "6. The Differences Between IDS and IPS"},
-        <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
+        <Button as={RouterLink} to="/"   bottom="3" right="3">Home Page</Button>
     ];
     
     
@@ -39,16 +40,16 @@ export function Page10() {
 
         <><Box textAlign="center" fontSize="2xl">
 
-            <Box textAlign="left" position="fixed">
+            <Box textAlign="left"  >
+                <Topbar/>
             <Topics title="HONEYPOT" topics={topicList}/>
                
             
             
-        </Box><Box paddingtop="10"> <Header /></Box><Grid minH="50vh" p={3}>
-                <ColorModeSwitcher justifySelf="flex-end" />
+        </Box><ColorModeSwitcher justifySelf="flex-end" />
                 <VStack>
 
-                <Box bg={color} width="-moz-max-content" p={10} textColor={textcolor} opacity="100%" borderRadius="50%">
+                <Box bg={color} width="-moz-max-content" p={10} textColor={textcolor} opacity="100%" borderRadius="5%">
      <Text fontSize="5xl">
                             Networking & it’s Security
                         </Text>
@@ -82,19 +83,10 @@ IDS requires a human or another system to look at the results and determine what
 
 
                 </VStack>
-            </Grid><Spacer /><Box position="fixed" bottom="3" left="3">
-
-                <Button as={RouterLink} to="/page9">
-                    Previous Page
-                </Button>
-                <Spacer />
-                <Button as={RouterLink} to="/page11" position="fixed" bottom="3" right="3">
-                    Next Page
-                </Button>
-                <Spacer />
-            </Box>
+    
             <Grid>
-                <Box justifySelf="center"> <Footer />
+                <Box justifySelf="center"> <Footer nextPage="/bibliography"
+                        previousPage="/page9"/>
                 </Box></Grid>
 
         </Box></>

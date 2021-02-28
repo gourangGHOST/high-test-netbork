@@ -2,12 +2,19 @@ import * as React from "react"
 
 
 import {
+    Button,
     HStack,
     IconButton,
+    Spacer,
+    Link,
+    Box,
+    Heading,
 } from "@chakra-ui/react"
-import { FaGithub, FaLinkedinIn, FaTwitter } from "react-icons/fa"
+import { FaGithub, FaLinkedinIn, FaTwitter, FaExternalLinkAlt } from "react-icons/fa"
 import { AiOutlineMail } from "react-icons/ai"
-export function Footer() {
+import { Link as RouterLink } from "react-router-dom"
+
+export function Footer(props: { nextPage: string, previousPage: string }) {
 
     const openGit = () => {
         window.location.href = 'https://github.com/HIGH238';
@@ -23,8 +30,15 @@ export function Footer() {
     }
 
     return (
-
+        <Box  textAlign="center">
+<Link href="https://www.geeksforgeeks.org/" isExternal>
+<Heading textDecoration="Highlight"> FOR MORE INFORMATION CLICK ME </Heading></Link>
         <HStack padding="10" >
+            
+            <Button as={RouterLink} to={props.nextPage} position="fixed" bottom="3" right="5">
+                Next Page
+            </Button>
+            <Spacer/>
             <IconButton
                 size="lg"
                 variant="outline"
@@ -50,8 +64,13 @@ export function Footer() {
                 aria-label="twitter"
                 onClick={openTwitter}
                 icon={<FaTwitter />} />
+<Spacer/>
+            
+            <Button as={RouterLink} to={props.previousPage}  position="fixed" bottom="3" left="2">
+                Previous Page
+            </Button>
         </HStack>
-
+        </Box>
 
     )
 

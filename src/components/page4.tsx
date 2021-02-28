@@ -48,6 +48,7 @@ import Static2 from "../resources/STATIC2.png";
 import { Link as RouterLink, Redirect } from "react-router-dom"
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
 import { Topics } from "./topics"
+import { Topbar } from "./something";
 export function Page4() {
     const color = useColorModeValue('purple.400', 'plum');
     const textcolor = useColorModeValue('white', 'black');
@@ -61,19 +62,19 @@ export function Page4() {
         {href: "#static and bid", content: "7. Static Routing "},
         {href: "#default", content: "8. Default Routing "},
         {href: "#dynamic", content: "9.  Dynamic Routing "},
-        <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
+        <Button as={RouterLink} to="/"   bottom="3" right="3">Home Page</Button>
         
     ]; 
     return (
         <Box textAlign="center" fontSize="xl">
-            <Box textAlign="left" position="fixed">
+            <Box textAlign="left"  >
+                <Topbar/>
             <Topics title="ROUTERS" topics={topicList} />
             </Box>
-            <Box paddingtop="10" > <Header/></Box>
             <Grid minH="50vh" p={3}>
                 <ColorModeSwitcher justifySelf="flex-end" />
                 <VStack>
-                <Box bg={color} width="-moz-max-content" p={10} textColor={textcolor} opacity="100%" borderRadius="50%">
+                <Box bg={color} width="-moz-max-content" p={10} textColor={textcolor} opacity="100%" borderRadius="5%">
       <Text fontSize="5xl" >
                             Networking & it’s Security
                             </Text>
@@ -265,22 +266,9 @@ We can enter in this mode when we interrupt boot process of the router. Generall
                 </VStack>
             </Grid>
             <Spacer />
-
-            <Box position="fixed" bottom="3" left="0">
-
-                <Button as={RouterLink} to="/page3">
-                    Previous Page
-                </Button>
-                <Spacer />
-                <Button as={RouterLink} to="/page5" position="fixed" bottom="3" right="0">
-                    Next Page
-                </Button>
-                <Spacer />
-                </Box>
-           
-
                 <Grid>
-                <Box justifySelf="center"> <Footer />
+                <Box justifySelf="center"> <Footer nextPage="/page5"
+                        previousPage="/page3"/>
                 </Box></Grid>
 
 

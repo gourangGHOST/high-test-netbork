@@ -29,6 +29,7 @@ export function Topics(props: { topics: any, title: string }) {
                     onClick={() => handleClick(size)}
                     key={size}
                     m={4}
+                    mt={5}
                 >{`TOPICS`}</Button>
             ))}
 
@@ -39,7 +40,7 @@ export function Topics(props: { topics: any, title: string }) {
                         <DrawerBody>
 {props.topics.map((topic: any) => <SingleTopic href={topic.href} content={topic.content} />)}
 
-                            <Button as={RouterLink} to="/" position="fixed" bottom="3" right="3">Home Page</Button>
+                            <Button as={RouterLink} to="/"   bottom="3" right="3">Home Page</Button>
                         </DrawerBody>
                     </DrawerContent>
                 </DrawerOverlay>

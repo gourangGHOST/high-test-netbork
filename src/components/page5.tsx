@@ -19,6 +19,7 @@ import { Footer } from "./footer";
 import { Link as RouterLink, Redirect, Route } from "react-router-dom"
 import { ColorModeSwitcher } from "../ColorModeSwitcher"
 import { Topics } from "./topics"
+import { Topbar } from "./something";
 
 
 export function Page5() {
@@ -41,15 +42,15 @@ export function Page5() {
 
         <Box textAlign="center" fontSize="1xl" >
             <Box textAlign="left" position="fixed" >
+                <Topbar/>
             <Topics title="RIP and OSFP" topics={topicList} />
             </Box>
-            <Box paddingtop="10"  > <Header /></Box>
 
             <Grid minH="50vh" p={3}>
                 <ColorModeSwitcher justifySelf="flex-end" />
                 <VStack>
 
-                    <Box bg={color} width="-moz-max-content" p={10} textColor={textcolor} opacity="100%" borderRadius="50%">
+                    <Box bg={color} width="-moz-max-content" p={10} textColor={textcolor} opacity="100%" borderRadius="5%">
                         <Text fontSize="5xl" >
                             Networking & it’s Security
                             </Text>
@@ -100,20 +101,9 @@ Open shortest path first (OSPF) is developed by Internet Engineering Task Force 
             </Grid>
             <Spacer />
 
-            <Box position="fixed" bottom="3" left="0">
-
-                <Button as={RouterLink} to="/page4">
-                    Previous Page
-                </Button>
-                <Spacer />
-                <Button as={RouterLink} to="/page6" position="fixed" bottom="3" right="0">
-                    Next Page
-                </Button>
-                <Spacer />
-            </Box>
-
             <Grid>
-                <Box justifySelf="center"> <Footer />
+                <Box justifySelf="center"> <Footer nextPage="/page6"
+                        previousPage="/page4"/>
                 </Box></Grid>
 
 
