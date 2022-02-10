@@ -10,7 +10,7 @@ body:
       value: |
         Thanks for taking the time to fill out this Bounty!
   - type: input
-    id: contact
+    id: testarea
     attributes:
       label: Overview 
       placeholder: General background needed for bounty hunter to complete task.
