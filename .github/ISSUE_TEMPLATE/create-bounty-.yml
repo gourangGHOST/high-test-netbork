@@ -21,7 +21,7 @@ body:
     attributes:
       label: Reference
       placeholder: An explanation as to where the bounty hunter should look or code that is affected.
-      value: ""
+      value: " e.g visit this website"
     validations:
       required: true
   - type: dropdown
